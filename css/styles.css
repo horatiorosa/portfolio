@@ -61,55 +61,6 @@ p{
 	text-align: center;
 }
 
-/* Menu
- * --------------------------------------- */
-/*#menu li {
-	display:inline-block;
-	margin: 10px;
-	color: #000;
-	background:#fff;
-	background: rgba(52, 152, 219, 0.8);
-	-webkit-border-radius: 10px;
-            border-radius: 10px;
-}
-#menu li.active{
-	background:#666;
-	background: rgba(52, 152, 219, 0.5);
-	color: #fff;
-}
-#menu li a{
-	text-decoration:none;
-	color: #000;
-}
-#menu li.active a:hover{
-	color: #000;
-}
-#menu li:hover{
-	background: rgba(52, 152, 219, 0.6);
-}
-#menu li a,
-#menu li.active a{
-	padding: 9px 18px;
-	display:block;
-	box-sizing: border-box;
-  border-radius: 10px;
-  background-color: rgba(52, 152, 219, 0.7);
-}
-#menu li.active a{
-	color: #fff;
-}
-#menu{
-	position:fixed;
-	top:0;
-	left:0;
-	height: 40px;
-	z-index: 70;
-	width: 100%;
-	padding: 0;
-	margin:0;
-}*/
-
-
 .intro p{
 	width: 50%;
 	margin: 0 auto;
@@ -139,21 +90,6 @@ p{
 	color: rgb(236, 240, 241) !important;
 }
 
-/*#section1 h1{
-	color: #444;
-}
-#section1 p{
-	
-}*/
-
-/*#section1 .skills {
-	margin-top: 50px;
-
-}*/
-
-/*.border {
-	border: 5px yellow solid !important;
-}*/
 #section1 img{
 	margin: 20px 0;
 	opacity: 0.7;
@@ -176,11 +112,6 @@ strong {
 	/*color: rgb(46, 204, 113)*/
 }
 
-#nycda {
-	color: rgb(236, 240, 241);
-	text-decoration: none;
-	text-shadow: 3px 3px 3px rgb(41, 128, 185);
-}
 
 .nycda a:hover {
 	color: white !important;
@@ -189,7 +120,7 @@ strong {
 p.abtme {
   font-size: 1.5em !important;
   color: white;
-  text-shadow: 3px 3px 3px rgb(41, 128, 185);
+  text-shadow: 1px 1px 1px rgb(41, 128, 185);
   padding-top: -2px
 }
 
@@ -218,16 +149,6 @@ p.abtme {
 	opacity: 0.8;
 }
 
-/*#section2 #colors{
-	right: 60px;
-	bottom: 0;
-	position: absolute;
-	height: 413px;
-	width: 258px;
-	background-image: url(imgs/colors.gif);
-	background-repeat: no-repeat;
-}
-*/
 /* Section 3
  * --------------------------------------- */
 #section3{
@@ -280,11 +201,14 @@ ul.social-network li {
 .social-network a.icoLinkedin:hover {
 	background-color:#007bb7;
 }
+.social-network a.icoInstagram:hover {
+	background-color: #f1c40f;
+}
 .social-network a.icoEmailMe:hover {
 	background-color: #2ecc71;
 }
 .social-network a.icoHoratio:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
-.social-network a.icoGitHub:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i .social-network a.icoEmailMe:hover i,{
+.social-network a.icoGitHub:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i, .social-network a.icoInstagram:hover i, .social-network a.icoEmailMe:hover i{
 	color:#fff;
 }
 a.socialIcon:hover, .socialHoverClass {
@@ -462,8 +386,6 @@ a.ache2:hover, a.ache2:visited, a.ache2:active, a.ache2:link  {
 
 }
 
-
-
 .carousel-caption {
   position: absolute;
   right: 15%;
@@ -489,10 +411,10 @@ small {
  	color: rgb(46, 204, 113) !important;
  }
 
- .projtitle, a {
+/* .projtitle, a {
  	color: rgb(46, 204, 113);
 
- } 
+ } */
 
 a {
     cursor: url(../imgs/peo845.cur), default;
@@ -501,6 +423,17 @@ a {
 ul.linktos li {
 	list-style: none !important;
 	display: inline !important;
-	color: rgb(236, 240, 241) !important;
+	color: rgb(236, 240, 241) !important; 
 	
+}
+.stylink{
+	color: rgb(52, 152, 219);
+	text-decoration: none;
+	text-shadow: 1px 1px 1px rgb(52, 152, 219);
+}
+
+.hvr, a:hover{
+	text-decoration: none;
+	text-shadow: 1px 1px 1px rgb(46, 204, 113);
+
 }
