@@ -1,16 +1,16 @@
 var deleteLog = false;
 
-    $(document).ready(function() {
-        $('#pagepiling').pagepiling({
-          menu: '#menu',
-          anchors: ['about_me', 'my_projects', 'contact_me'],
-          navigation: {
-                'textColor': '#f2f2f2',
-                'bulletsColor': '#ccc',
-                'position': 'right',
-                'tooltips': ['About Me', 'My Projects', 'Contact Me']
-            }
-      });
+$(document).ready(function() {
+    $('#pagepiling').pagepiling({
+      menu: '#menu',
+      anchors: ['about_me', 'my_projects', 'contact_me'],
+      navigation: {
+            'textColor': '#f2f2f2',
+            'bulletsColor': '#ccc',
+            'position': 'right',
+            'tooltips': ['About Me', 'My Projects', 'Contact Me']
+        }
+  });
 
      $('#myCarousel').carousel({
         interval:   4000
