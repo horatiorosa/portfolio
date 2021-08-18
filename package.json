@@ -1,0 +1,26 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "my portfolio",
+  "main": "scripts/main.js",
+  "devDependencies": {
+    "parcel-bundler": "^1.9.4"
+  },
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horatiorosa/portfolio.git"
+  },
+  "author": "me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horatiorosa/portfolio/issues"
+  },
+  "homepage": "https://github.com/horatiorosa/portfolio#readme",
+  "browserslist": [
+    "last 1 Chrome version",
+    "last 1 Firefox version"
+  ]
+}
