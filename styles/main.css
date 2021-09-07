@@ -87,7 +87,6 @@ h6 {
 .app {
   display: grid;
   grid-template-rows: auto 1fr 1fr auto;
-  height: 100vh;
 }
 /* nav bar */
 .navbar {
@@ -150,6 +149,10 @@ h6 {
   grid-template-rows: 1fr 2fr 50px;
   justify-items: center;
   align-items: center;
+  height: 100vh;
+}
+
+.learn-more {
 }
 
 .hello_world,
@@ -161,13 +164,16 @@ h6 {
 /* projects  */
 .projects {
   display: grid;
+  align-items: center;
   justify-items: center;
+  margin: 1em 0;
 }
 
 /* contact me */
 .contact-me {
   display: grid;
   justify-items: center;
+  margin: 1em 0;
 }
 
 .contact-me .menu__list .menu__link {
