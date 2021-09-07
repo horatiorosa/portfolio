@@ -3,37 +3,78 @@
 	<head>
 		 <meta charset="UTF-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Horatio Rosa</title>
-		<meta name="Horatio Rosa" content="My Corner of the Internets" />
+		<title>Horatio Rosa - Web Developer</title>
+		<meta name="description" content="Horatio Rosa worked on Bark's landing pages, the subscription flow with the goal of increasing conversion and reducing pain-points as well as one-off projects supporting the marketing teams efforts for engagement" />
 		<link rel="stylesheet" href="styles/main.css" />
-		<link rel="shortcut icon" href="#">
+		<link rel="icon" type="image/png" sizes="64x64" href="images/jiro-icon.png">
 	</head>
 	<body>
 		<div class="app">
-			<section class="names__container">
-				<div class="names__wrapper">
-					<div class="name__wrapper name__wrapper--first_name">
-						<h1>Horatio</h1>
-					</div>
-					<div class="name__wrapper	name__wrapper--last_name">
-						<h1>Rosa</h1>
-					</div>
-					<div class="name__wrapper name__wrapper--first_title">
-						<h3>Software</h3>
-					</div>
-					<div class="name__wrapper	name__wrapper--last_title">
-						<h3>Engineer</h3>
-					</div>
+			<nav class="navbar">
+				<button class="menu__button" aria-expanded="false" aria-controls="menu__list">
+	        <span class="open">☰</span>
+	        <span class="close">×</span>
+	        Menu
+	      </button>
+				<ul class="menu__list">
+					<!-- do i need this section?-->
+					<li class="menu__item menu__home">
+						<a href="#" class="menu__link">home</a>
+					</li>
+					<li class="menu__item menu__projects">
+						<a href="#projects__link" class="menu__link">projects</a>
+					</li>
+					<li class="menu__item menu__links">
+						<a href="#social__links" class="menu__link">social</a>
+					</li>
+					<li class="menu__item menu__contact_me">
+						<!-- <a href="#" class="menu__link"><img src="images/paper_plane.svg" alt="" height="20"></a> -->
+						<a href="mailto:horatiorosa@gmail.com"
+							class="menu__link">contact</a>
+					</li>
+				</ul>
+			</nav>
+			<section class="intro__wrapper">
+				<div class="hello_world">
+					<h1>Hello, I'm Horatio.</h1>
 				</div>
+				<div class="about-me">
+					<h3>I am a <span class="title">Web Developer</span class="title"> based in New York. </h3>
+				</div>
+				<div class="learn-more">
+					<p>learn more</p>
+				</div>
+				<hr class="divider">
 			</section>
-
+			<section class="projects"
+				id="projects__link">
+				<h1>PROJECTS</h1>
+				<p>coming soon</p>
+			</section>
+			<section class="contact-me"
+				id="social__links">
+				<h2>CONTACT ME</h2>
+				<ul class="menu__list">
+					<li class="menu__item">
+						<a href="https://github.com/horatiorosa"
+							class="menu__link"
+							title="GitHub Repo"
+							target="_blank">
+						github
+					</a>
+					</li>
+					<li class="menu__item">
+						<a href="#" class="menu__link">linkedIn</a>
+					</li>
+					<li class="menu__item">
+						<a href="#" class="menu__link">TBA</a>
+					</li>
+					<li class="menu__item">
+						<a href="#" class="menu__link">TBA</a>
+					</li>
+				</ul>
+			</section>
 		</div>
-
-
-
-
-
-
 
 		<script src="scripts/main.js"></script>
 	</body>
