@@ -142,6 +142,12 @@ h6 {
   grid-column: 1 / -1;
 }
 
+.intro__wrapper,
+.projects,
+.contact-me {
+  height: 100vh;
+}
+
 /* hero */
 .intro__wrapper {
   display: grid;
@@ -149,7 +155,6 @@ h6 {
   grid-template-rows: 1fr 2fr 50px;
   justify-items: center;
   align-items: center;
-  height: 100vh;
 }
 
 .learn-more {
