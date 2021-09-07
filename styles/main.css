@@ -169,3 +169,7 @@ h6 {
   display: grid;
   justify-items: center;
 }
+
+.contact-me .menu__list .menu__link {
+  font-size: 15px;
+}
