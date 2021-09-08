@@ -166,6 +166,10 @@ h6 {
   grid-column: 1 / -1;
 }
 
+.blurb {
+  text-align: center;
+}
+
 /* projects  */
 .projects {
   display: grid;
