@@ -2,7 +2,6 @@ const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
 const app = document.querySelector('.app');
 
 async function animateTitle() {
-  console.log('starting');
   const titleSpan = app.querySelector('.title');
 
   const titles = ['Dog Dad', 'Engineer', 'Volleyball Player', 'Human', 'Web Developer'];
@@ -10,10 +9,8 @@ async function animateTitle() {
     await wait(1500);
     const newTitle = await title;
     titleSpan.innerText = newTitle;
-    console.log(newTitle);
   }
 
-  console.log('ending');
 }
 
 animateTitle();
