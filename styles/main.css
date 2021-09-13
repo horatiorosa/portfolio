@@ -188,3 +188,45 @@ h6 {
 .contact-me .menu__list .menu__link {
   font-size: 15px;
 }
+
+/* modal styles */
+
+.modal-outer {
+  display: grid;
+  background: hsla(0, 0%, 50%, 0.5);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-outer img {
+  width: 100%;
+}
+
+.modal-outer.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-inner {
+  background: hsla(50, 100%, 50%, 0.8);
+  max-width: 50vw;
+  min-width: 400px;
+  padding: 2rem;
+  border-radius: 5px;
+  min-height: 200px;
+  transform: translateY(-200%);
+  transition: transform 2s;
+}
+
+.modal-outer.open .modal-inner {
+  transform: translateY(0);
+}
+
