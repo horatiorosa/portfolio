@@ -5,7 +5,6 @@ const modalInner = modalOuter.querySelector('.modal-inner');
 
 
 // modal f/x
-
 function handlePageLoad() {
   modalOuter.classList.add('open');
 }
@@ -31,6 +30,13 @@ window.addEventListener('keydown', event => {
   }
 });
 
+async function expireModal() {
+  await wait(5000);
+  if (modalOuter) {
+    closeModal();
+  }
+}
+
 async function animateTitle() {
   const titleSpan = app.querySelector('.title');
 
@@ -44,6 +50,7 @@ async function animateTitle() {
 }
 
 animateTitle();
+expireModal();
 
 document.removeEventListener('DOMContentLoaded', pageLoaded);
 
