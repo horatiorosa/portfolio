@@ -15,6 +15,7 @@ const pageLoaded = document.addEventListener('DOMContentLoaded', function(e) {
 
 function closeModal() {
   modalOuter.classList.remove('open');
+  animateTitle();
 }
 
 modalOuter.addEventListener('click', function(event) {
@@ -39,17 +40,15 @@ async function expireModal() {
 
 async function animateTitle() {
   const titleSpan = app.querySelector('.title');
-
   const titles = ['Dog Dad', 'Engineer', 'Volleyball Player', 'Human', 'Web Developer'];
+
   for (const title of titles) {
     await wait(1000);
     const newTitle = await title;
     titleSpan.innerText = newTitle;
   }
-
 }
 
-animateTitle();
 expireModal();
 
 document.removeEventListener('DOMContentLoaded', pageLoaded);

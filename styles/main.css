@@ -152,12 +152,13 @@ h6 {
 .intro__wrapper {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: 1fr 2fr 50px;
+  grid-template-rows: 200px 350px 50px 30px;
   justify-items: center;
   align-items: center;
 }
 
-.learn-more {
+.learn-more p {
+  margin: 0;
 }
 
 .hello_world,
