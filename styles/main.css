@@ -142,19 +142,34 @@ h6 {
   grid-column: 1 / -1;
 }
 
-.intro__wrapper,
+/*.intro__wrapper,
 .projects,
 .contact-me {
   height: 100vh;
-}
+}*/
+
+/* linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%)  */
 
 /* hero */
 .intro__wrapper {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: 200px 350px 50px 30px;
+  grid-template-rows: 200px 350px 50px 5px;
   justify-items: center;
   align-items: center;
+}
+
+.intro__wrapper::after {
+  position: absolute;
+  background: url(/images/sublime.jpg);
+  content: "";
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
 
 .learn-more p {
