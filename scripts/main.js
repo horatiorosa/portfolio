@@ -1,8 +1,8 @@
 const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
+
 const app = document.querySelector('.app');
 const modalOuter = document.querySelector('.modal-outer');
 const modalInner = modalOuter.querySelector('.modal-inner');
-
 
 // modal f/x
 function handlePageLoad() {
@@ -32,22 +32,34 @@ window.addEventListener('keydown', event => {
 });
 
 async function expireModal() {
-  await wait(5000);
-  if (modalOuter) {
+  await wait(4000);
+  if (modalOuter.classList.contains('open')) {
     closeModal();
   }
 }
 
 async function animateTitle() {
   const titleSpan = app.querySelector('.title');
-  const titles = ['Dog Dad', 'Engineer', 'Volleyball Player', 'Human', 'Web Developer'];
+  const backgroundImage = app.querySelector('.background-image');
 
-  for (const title of titles) {
-    await wait(1000);
-    const newTitle = await title;
-    titleSpan.innerText = newTitle;
+  // const titles = ['Dog Dad', 'Engineer', 'Volleyball Player', 'Human', 'Web Developer'];
+  const titles = [
+    {'title': 'Dog Dad', 'image': 'images/horatio_jiro_family_portrait.jpg', 'alt': 'man and his dog posed in a family style photo'},
+    {'title': 'Volleyball Player', 'image': 'images/volleyball_team_lets_go.jpg', 'alt': 'men and women of a volleyball team in a huddle'},
+    {'title': 'Web Developer', 'image': 'images/sublime.jpg', 'alt': 'photo of Sublime Text editor with code'}
+  ];
+
+  for (const key of titles) {
+    await wait(2000);
+    const titleText = await key.title;
+    const imageSource= await key.image;
+    const altText = await key.alt;
+
+    titleSpan.innerText = titleText;
+    backgroundImage.src =  imageSource;
+    backgroundImage.alt = altText;
   }
-}
+};
 
 expireModal();
 
