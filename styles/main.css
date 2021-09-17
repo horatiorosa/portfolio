@@ -194,6 +194,7 @@ h6 {
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   background: rgba(232, 232, 232, .5);
+  overflow: hidden;
 }
 
 .background-image {
