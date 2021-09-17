@@ -50,7 +50,7 @@ async function animateTitle() {
   ];
 
   for (const key of titles) {
-    await wait(2000);
+    await wait(500);
     const titleText = await key.title;
     const imageSource= await key.image;
     const altText = await key.alt;
@@ -60,7 +60,7 @@ async function animateTitle() {
     titleSpan.classList.add('fade-in-text');
     backgroundImage.classList.add('fade-in');
     backgroundImage.alt = altText;
-    await wait(2000);
+    await wait(3500);
     titleSpan.classList.remove('fade-in-text');
     backgroundImage.classList.remove('fade-in');
 
