@@ -42,8 +42,8 @@ async function animateTitle() {
   const titleSpan = app.querySelector('.title');
   const backgroundImage = app.querySelector('.background-image');
 
-  // const titles = ['Dog Dad', 'Engineer', 'Volleyball Player', 'Human', 'Web Developer'];
   const titles = [
+    {'title': 'Web Developer', 'image': 'images/sublime.jpg', 'alt': 'photo of Sublime Text editor with code'},
     {'title': 'Dog Dad', 'image': 'images/horatio_jiro_family_portrait.jpg', 'alt': 'man and his dog posed in a family style photo'},
     {'title': 'Volleyball Player', 'image': 'images/volleyball_team_lets_go.jpg', 'alt': 'men and women of a volleyball team in a huddle'},
     {'title': 'Web Developer', 'image': 'images/sublime.jpg', 'alt': 'photo of Sublime Text editor with code'}
@@ -57,7 +57,12 @@ async function animateTitle() {
 
     titleSpan.innerText = titleText;
     backgroundImage.src =  imageSource;
+    titleSpan.classList.add('fade-in-text');
+    backgroundImage.classList.add('fade-in');
     backgroundImage.alt = altText;
+    await wait(1000);
+    titleSpan.classList.remove('fade-in-text');
+    backgroundImage.classList.remove('fade-in');
   }
 };
 
