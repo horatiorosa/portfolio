@@ -45,7 +45,7 @@ function handleKeyUp(e) {
 async function expireModal() {
   await wait(4000);
   if (modalOuter.classList.contains('open')) {
-    // closeModal();
+    closeModal();
   }
 }
 
