@@ -202,6 +202,7 @@ h6 {
   width: 100vw;
   height: 605px;
   z-index: -1;
+  object-fit: cover;
 }
 
 .learn-more p {
@@ -263,6 +264,27 @@ h6 {
   pointer-events: all;
 }
 
+.modal-close {
+  position: absolute;
+  padding: 1em;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  cursor: pointer;
+  transition: transform .2s ease;
+  border: 0;
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
+  background: 0 0;
+}
+
+.modal-close svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: bottom;
+}
+
 .modal-inner {
   /*background: hsla(50, 100%, 50%, 0.8);*/
   background: url(../images/under-construction.png) center center no-repeat hsla(50, 100%, 50%, 0.8);
@@ -273,7 +295,6 @@ h6 {
   min-height: 400px;
   padding: 2rem;
   border-radius: 5px;
-  height: initial;
   transform: translateY(-200%);
   transition: transform 2s;
 }

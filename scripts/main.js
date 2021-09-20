@@ -3,10 +3,15 @@ const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
 const app = document.querySelector('.app');
 const modalOuter = document.querySelector('.modal-outer');
 const modalInner = modalOuter.querySelector('.modal-inner');
+const close = modalInner.querySelector('.modal-close');
 
 // modal f/x
 function handlePageLoad() {
   modalOuter.classList.add('open');
+
+  modalOuter.addEventListener('click', handleClick);
+  close.addEventListener('click', handleClick);
+  window.addEventListener('keyup', handleKeyUp);
 }
 
 const pageLoaded = document.addEventListener('DOMContentLoaded', function(e) {
@@ -15,26 +20,32 @@ const pageLoaded = document.addEventListener('DOMContentLoaded', function(e) {
 
 function closeModal() {
   modalOuter.classList.remove('open');
+
+  modalOuter.removeEventListener('click', handleClick);
+  close.removeEventListener('click', handleClick);
+  window.removeEventListener('keyup', handleKeyUp);
+
   animateTitle();
 }
 
-modalOuter.addEventListener('click', function(event) {
-  const isOutside = !event.target.closest('.modal-inner');
-  if (isOutside) {
-    closeModal();
+function handleClick(e) {
+  if (e.currentTarget === close) {
+    return closeModal();
   }
-});
 
-window.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    closeModal();
+  if (e.target === e.currentTarget) {
+    return closeModal();
   }
-});
+}
+
+function handleKeyUp(e) {
+  if (e.key === 'Escape') return closeModal;
+}
 
 async function expireModal() {
   await wait(4000);
   if (modalOuter.classList.contains('open')) {
-    closeModal();
+    // closeModal();
   }
 }
 
@@ -60,7 +71,7 @@ async function animateTitle() {
     titleSpan.classList.add('fade-in-text');
     backgroundImage.classList.add('fade-in');
     backgroundImage.alt = altText;
-    await wait(3500);
+    await wait(3000);
     titleSpan.classList.remove('fade-in-text');
     backgroundImage.classList.remove('fade-in');
 
