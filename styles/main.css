@@ -220,7 +220,7 @@ h6 {
 }
 
 /* projects  */
-.projects {
+.projectsWrapper {
   display: grid;
   align-items: center;
   justify-items: center;

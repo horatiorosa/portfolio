@@ -4,6 +4,7 @@ const app = document.querySelector('.app');
 const modalOuter = document.querySelector('.modal-outer');
 const modalInner = modalOuter.querySelector('.modal-inner');
 const close = modalInner.querySelector('.modal-close');
+const links = document.querySelectorAll('.navbar .menu__list .menu__link');
 
 // modal f/x
 function handlePageLoad() {
@@ -14,9 +15,7 @@ function handlePageLoad() {
   window.addEventListener('keyup', handleKeyUp);
 }
 
-const pageLoaded = document.addEventListener('DOMContentLoaded', function(e) {
-  handlePageLoad();
-});
+const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 function closeModal() {
   modalOuter.classList.remove('open');
@@ -49,6 +48,22 @@ async function expireModal() {
   }
 }
 
+// scrolling f/x
+const handleLinkClick = e => {
+  e.preventDefault();
+  const href = e.currentTarget.getAttribute('href');
+  const offsetTop = document.querySelector(href).offsetTop;
+
+  scroll({
+    top: offsetTop,
+    behavior: 'smooth'
+  });
+}
+
+for (const link of links) {
+  link.addEventListener('click', handleLinkClick);
+}
+
 async function animateTitle() {
   const titleSpan = app.querySelector('.title');
   const backgroundImage = app.querySelector('.background-image');
@@ -67,7 +82,7 @@ async function animateTitle() {
     const altText = await key.alt;
 
     titleSpan.innerText = titleText;
-    backgroundImage.src =  imageSource;
+    backgroundImage.src = imageSource;
     titleSpan.classList.add('fade-in-text');
     backgroundImage.classList.add('fade-in');
     backgroundImage.alt = altText;
@@ -116,8 +131,13 @@ function animate() {
     });
   }
 }
+// TO DO
+// on load, animate the title --- COMPLETED
+// on hover / mouse enter, animate the tite
+// change background image to match the title --- COMPLETED
+// at the end of each animation, title should be the default (web dev)
+// Enable smooth scrolling on the links
+// fix the address bar so it doesn't look like trash
+// Also fix the links in the bottom
+// add project placeholders
 
-  // on load, animate the title
-  // on hover / mouse enter, animate the tite
-  // change background image to match the title
-  // at the end of each animation, title should be the default (web dev)
