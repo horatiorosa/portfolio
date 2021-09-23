@@ -1,14 +1,14 @@
 const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
 
 const app = document.querySelector('.app');
-const modalOuter = document.querySelector('.modal-outer');
-const modalInner = modalOuter.querySelector('.modal-inner');
-const close = modalInner.querySelector('.modal-close');
+const modalOuter = document.querySelector('.modal__outer');
+const modalInner = modalOuter.querySelector('.modal__inner');
+const close = modalInner.querySelector('.modal__button-close');
 const links = document.querySelectorAll('.navbar .menu__list .menu__link');
 
 // modal f/x
 function handlePageLoad() {
-  modalOuter.classList.add('open');
+  modalOuter.classList.add('modal__outer-open', 'modal__outer-background');
 
   modalOuter.addEventListener('click', handleClick);
   close.addEventListener('click', handleClick);
@@ -18,7 +18,7 @@ function handlePageLoad() {
 const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 function closeModal() {
-  modalOuter.classList.remove('open');
+  modalOuter.classList.remove('modal__outer-open', 'modal__outer-background');
 
   modalOuter.removeEventListener('click', handleClick);
   close.removeEventListener('click', handleClick);
@@ -28,25 +28,24 @@ function closeModal() {
 }
 
 function handleClick(e) {
-  if (e.currentTarget === close) {
-    return closeModal();
-  }
-
-  if (e.target === e.currentTarget) {
+  if ((e.currentTarget === close) ||
+    (e.target === e.currentTarget)) {
     return closeModal();
   }
 }
 
 function handleKeyUp(e) {
-  if (e.key === 'Escape') return closeModal;
+  if (e.key === 'Escape') return closeModal();
 }
 
 async function expireModal() {
   await wait(4000);
   if (modalOuter.classList.contains('open')) {
-    closeModal();
+    // closeModal();
   }
 }
+
+/* ----------------- */
 
 // scrolling f/x
 const handleLinkClick = e => {
@@ -56,14 +55,28 @@ const handleLinkClick = e => {
 
   scroll({
     top: offsetTop,
-    behavior: 'smooth'
+    behavior: 'instant'
   });
+
+  // scrollEffects();
 }
 
 for (const link of links) {
   link.addEventListener('click', handleLinkClick);
 }
 
+async function scrollEffects() {
+  modalOuter.classList.add('modal__outer-open', 'modal__outer-scroll', 'fade-in-scroll');
+  modalInner.style.display = 'none';
+  await wait(500);
+
+  modalOuter.classList.remove('modal__outer-open', 'modal__outer-scroll', 'fade-in-scroll');
+
+}
+
+/* ----------------- */
+
+/* title animation */
 async function animateTitle() {
   const titleSpan = app.querySelector('.title');
   const backgroundImage = app.querySelector('.background-image');
@@ -92,6 +105,8 @@ async function animateTitle() {
 
   }
 };
+
+/* ----------------- */
 
 expireModal();
 

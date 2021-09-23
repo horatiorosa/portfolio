@@ -84,6 +84,7 @@ h6 {
   font-size: 1.5em;
 }
 
+/* fade in f/x for hero background image */
 .fade-in {
   animation: fadeIn ease 2s;
   -webkit-animation: fadeIn ease 2s;
@@ -101,6 +102,7 @@ h6 {
   }
 }
 
+/* fade in f/x for hero title text */
 .fade-in-text {
   animation: fadeIn ease 2s;
   -webkit-animation: fadeIn ease 2s;
@@ -122,6 +124,7 @@ h6 {
   display: grid;
   grid-template-rows: auto 1fr 1fr auto;
 }
+
 /* nav bar */
 .navbar {
 }
@@ -175,8 +178,6 @@ h6 {
   width: 80%;
   grid-column: 1 / -1;
 }
-
-/* linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%)  */
 
 /* hero */
 .wrapper {
@@ -240,9 +241,8 @@ h6 {
 
 /* modal styles */
 
-.modal-outer {
+.modal__outer {
   display: grid;
-  background: hsla(0, 0%, 50%, 0.8);
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -255,16 +255,20 @@ h6 {
   transition: opacity 0.1s;
 }
 
-.modal-outer img {
+.modal__outer-background {
+  background: hsla(0, 0%, 50%, 0.8);
+}
+
+.modal__outer img {
   width: 100%;
 }
 
-.modal-outer.open {
+.modal__outer-open {
   opacity: 1;
   pointer-events: all;
 }
 
-.modal-close {
+.modal__button-close { /* close button */
   position: absolute;
   padding: 1em;
   top: 0;
@@ -279,14 +283,13 @@ h6 {
   background: 0 0;
 }
 
-.modal-close svg {
+.modal__button-close svg {
   width: 1em;
   height: 1em;
   vertical-align: bottom;
 }
 
-.modal-inner {
-  /*background: hsla(50, 100%, 50%, 0.8);*/
+.modal__inner {
   background: url(../images/under-construction.png) center center no-repeat hsla(50, 100%, 50%, 0.8);
   background-size: cover;
   width: 50vw;
@@ -295,11 +298,79 @@ h6 {
   min-height: 400px;
   padding: 2rem;
   border-radius: 5px;
-  transform: translateY(-200%);
+  position: relative;
   transition: transform 2s;
 }
 
-.modal-outer.open .modal-inner {
-  transform: translateY(0);
+.modal__outer-open .modal__inner {
+  animation: modalOpenAnimation ease 1s;
+  -webkit-animation: modalOpenAnimation ease 1s;
+  -moz-animation: modalOpenAnimation ease 1s;
+  -o-animation: modalOpenAnimation ease 1s;
+  -ms-animation: modalOpenAnimation ease 1s;
+}
+
+@keyframes modalOpenAnimation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* modal scroll f/x */
+.modal__outer-scroll {
+  background-color: rgb(0, 0, 0, .8);
+  background-image:
+  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 30px),
+  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px, 100px 100px, 50px 50px, 25px 25px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;\
+}
+
+.fade-in-scroll {
+  animation: fadeInScroll ease .1s;
+  -webkit-animation: fadeInScroll ease .1s;
+  -moz-animation: fadeInScroll ease .1s;
+  -o-animation: fadeInScroll ease .1s;
+  -ms-animation: fadeInScroll ease .1s;
+}
+
+@keyframes fadeInScroll {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.fade-out-scroll {
+  animation: fadeOutScroll ease 1s;
+  -webkit-animation: fadeOutScroll ease 1s;
+  -moz-animation: fadeOutScroll ease 1s;
+  -o-animation: fadeOutScroll ease 1s;
+  -ms-animation: fadeOutScroll ease 1s;
+}
+
+@keyframes fadeOutScroll {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }
 
