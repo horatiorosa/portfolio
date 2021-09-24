@@ -41,7 +41,7 @@ function handleKeyUp(e) {
 async function expireModal() {
   await wait(4000);
   if (modalOuter.classList.contains('open')) {
-    // closeModal();
+    closeModal();
   }
 }
 
@@ -55,7 +55,7 @@ const handleLinkClick = e => {
 
   scroll({
     top: offsetTop,
-    behavior: 'instant'
+    behavior: 'smooth'
   });
 
   // scrollEffects();
