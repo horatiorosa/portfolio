@@ -84,7 +84,15 @@ h6 {
   font-size: 1.5em;
 }
 
-/* fade in f/x for hero background image */
+.background-blur {
+  filter: blur(4px);
+}
+
+.hidden-overflow {
+  overflow: hidden;
+}
+
+/* fade in for hero bg image */
 .fade-in {
   animation: fadeIn ease 2s;
   -webkit-animation: fadeIn ease 2s;
@@ -162,15 +170,12 @@ h6 {
 }
 
 .menu__projects {
-  /*grid-column: span 2 / 5;*/
 }
 
 .menu__links {
-  /*grid-column: span 2 / 7;*/
 }
 
 .menu__contact_me {
-  /*grid-column: span 2 / 9;*/
 }
 
 .divider {
@@ -240,7 +245,6 @@ h6 {
 }
 
 /* modal styles */
-
 .modal__outer {
   display: grid;
   position: fixed;
@@ -256,7 +260,7 @@ h6 {
 }
 
 .modal__outer-background {
-  background: hsla(0, 0%, 50%, 0.8);
+  background: hsl(0, 100%, 100%, .5)
 }
 
 .modal__outer img {
@@ -265,10 +269,11 @@ h6 {
 
 .modal__outer-open {
   opacity: 1;
+  overflow-y: hidden;
   pointer-events: all;
 }
 
-.modal__button-close { /* close button */
+.modal__button-close {
   position: absolute;
   padding: 1em;
   top: 0;
@@ -289,6 +294,7 @@ h6 {
   vertical-align: bottom;
 }
 
+/* 👇🏽👇🏽 remove this section when page is "complete" 👇🏽👇🏽 */
 .modal__inner {
   background: url(../images/under-construction.png) center center no-repeat hsla(50, 100%, 50%, 0.8);
   background-size: cover;
@@ -319,58 +325,59 @@ h6 {
   }
 }
 
-/* modal scroll f/x */
-.modal__outer-scroll {
-  background-color: rgb(0, 0, 0, .8);
-  background-image:
-  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 30px),
-  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 40px),
-  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 30px),
-  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 30px),
-  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 40px),
-  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 30px),
-  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px, 100px 100px, 50px 50px, 25px 25px;
-  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;\
-}
-
-.fade-in-scroll {
-  animation: fadeInScroll ease .1s;
-  -webkit-animation: fadeInScroll ease .1s;
-  -moz-animation: fadeInScroll ease .1s;
-  -o-animation: fadeInScroll ease .1s;
-  -ms-animation: fadeInScroll ease .1s;
-}
-
-@keyframes fadeInScroll {
-  0% {
-    opacity:0;
+@keyframes pageLoadAnimation {
+  45% {
+    opacity: 1;
   }
-  100% {
-    opacity:1;
+
+  46% {
+    box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 0 black, 0 0 5px 10px #298df4;
+  }
+
+  50% {
+    box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 101px black, 0 0 0 173px #298df4;
+  }
+
+  52% {
+    box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 245px black, 0 0 0 255px #298df4;
+  }
+
+  55% {
+    opacity: 1;
+    box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 317px black, 0 0 0 320px #298df4;
+  }
+
+  81% {
+    opacity: 0;
+    box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 549px black, 0 0 0 549px #298df4;
   }
 }
+/* ☝🏽☝🏽-----------------☝🏽☝🏽 */
 
-.fade-out-scroll {
-  animation: fadeOutScroll ease 1s;
-  -webkit-animation: fadeOutScroll ease 1s;
-  -moz-animation: fadeOutScroll ease 1s;
-  -o-animation: fadeOutScroll ease 1s;
-  -ms-animation: fadeOutScroll ease 1s;
+.ripple-origin {
+  display: none;
 }
 
-@keyframes fadeOutScroll {
-  0% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
+.ripple-origin-show {
+  display: unset;
 }
 
+.ripple {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0.2em;
+  height: 0.2em;
+  background-color: #97f4ff;
+  box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 0 black, 0 0 0 0 #298df4;
+  opacity: 0;
+  animation: pageLoadAnimation linear 1.834s;
+  border-radius: 50%;
+}
+
+@media (max-width:  7800px) {
+  .app {
+    /*position: fixed*/
+    /* may need this to prevent scrolling on mobile */
+  }
+}

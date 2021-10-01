@@ -1,13 +1,17 @@
 const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
 
-const app = document.querySelector('.app');
-const modalOuter = document.querySelector('.modal__outer');
+const body = document.querySelector('body');
+const app = body.querySelector('.app');
+const modalOuter = body.querySelector('.modal__outer');
 const modalInner = modalOuter.querySelector('.modal__inner');
 const close = modalInner.querySelector('.modal__button-close');
-const links = document.querySelectorAll('.navbar .menu__list .menu__link');
+const rippleOrigin = modalOuter.querySelector('.ripple-origin');
+const links = body.querySelectorAll('.navbar .menu__list .menu__link');
 
 // modal f/x
 function handlePageLoad() {
+  body.classList.add('hidden-overflow');
+  app.classList.add('background-blur');
   modalOuter.classList.add('modal__outer-open', 'modal__outer-background');
 
   modalOuter.addEventListener('click', handleClick);
@@ -15,11 +19,16 @@ function handlePageLoad() {
   window.addEventListener('keyup', handleKeyUp);
 }
 
-const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad);
+async function closeModal() {
+  modalCloseAnimation();
 
-function closeModal() {
+  await wait(1500);
+  body.classList.remove('hidden-overflow');
+  rippleOrigin.classList.remove('ripple-origin-show', 'ripple');
   modalOuter.classList.remove('modal__outer-open', 'modal__outer-background');
+  app.classList.remove('background-blur');
 
+  window.scrollTo(0,0);
   modalOuter.removeEventListener('click', handleClick);
   close.removeEventListener('click', handleClick);
   window.removeEventListener('keyup', handleKeyUp);
@@ -27,6 +36,7 @@ function closeModal() {
   animateTitle();
 }
 
+/* 👇🏽👇🏽 remove this section when page is "complete" 👇🏽👇🏽 */
 function handleClick(e) {
   if ((e.currentTarget === close) ||
     (e.target === e.currentTarget)) {
@@ -39,42 +49,17 @@ function handleKeyUp(e) {
 }
 
 async function expireModal() {
-  await wait(4000);
+  await wait(3000);
   if (modalOuter.classList.contains('open')) {
     closeModal();
   }
 }
 
-/* ----------------- */
-
-// scrolling f/x
-const handleLinkClick = e => {
-  e.preventDefault();
-  const href = e.currentTarget.getAttribute('href');
-  const offsetTop = document.querySelector(href).offsetTop;
-
-  scroll({
-    top: offsetTop,
-    behavior: 'smooth'
-  });
-
-  // scrollEffects();
+function modalCloseAnimation() {
+  modalInner.style.cssText = `display: none;`;
+  rippleOrigin.classList.add('ripple-origin-show', 'ripple');
 }
-
-for (const link of links) {
-  link.addEventListener('click', handleLinkClick);
-}
-
-async function scrollEffects() {
-  modalOuter.classList.add('modal__outer-open', 'modal__outer-scroll', 'fade-in-scroll');
-  modalInner.style.display = 'none';
-  await wait(500);
-
-  modalOuter.classList.remove('modal__outer-open', 'modal__outer-scroll', 'fade-in-scroll');
-
-}
-
-/* ----------------- */
+/* ☝🏽☝🏽-----------------☝🏽☝🏽 */
 
 /* title animation */
 async function animateTitle() {
@@ -105,10 +90,11 @@ async function animateTitle() {
 
   }
 };
-
 /* ----------------- */
 
 expireModal();
+
+const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 document.removeEventListener('DOMContentLoaded', pageLoaded);
 
@@ -121,37 +107,38 @@ const select = (el, all = false) => {
   }
 }
 
+// Not sure if I want to implement this, don't want to have to use an external library
+// class Typed {
+//   constructor(strings, loop, typeSpeed, backSpeed, backDelay) {
+//     this.strings = strings;
+//     this.loop = loop;
+//     this.typeSpeed = typeSpeed;
+//     this.backSpeed = backSpeed;
+//     this.backDelay = backDelay;
+//   }
+//  }
 
-class Typed {
-  constructor(strings, loop, typeSpeed, backSpeed, backDelay) {
-    this.strings = strings;
-    this.loop = loop;
-    this.typeSpeed = typeSpeed;
-    this.backSpeed = backSpeed;
-    this.backDelay = backDelay;
-  }
- }
+// const typed = select('.title')
+// function animate() {
+//   if (typed) {
+//     let typed_strings = 'Dog Dad, Engineer, Volleyball Player, Human, Web Developer';
+//     typed_strings = typed_strings.split(',')
+//     new Typed('.title', {
+//       strings: typed_strings,
+//       loop: true,
+//       typeSpeed: 100,
+//       backSpeed: 50,
+//       backDelay: 2000
+//     });
+//   }
+// }
 
-const typed = select('.title')
-function animate() {
-  if (typed) {
-    let typed_strings = 'Dog Dad, Engineer, Volleyball Player, Human, Web Developer';
-    typed_strings = typed_strings.split(',')
-    new Typed('.title', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
-}
 // TO DO
 // on load, animate the title --- COMPLETED
-// on hover / mouse enter, animate the tite
+// on hover / mouse enter, animate the title
 // change background image to match the title --- COMPLETED
-// at the end of each animation, title should be the default (web dev)
-// Enable smooth scrolling on the links
+// at the end of each animation, title should be the default (web dev) --- COMPLETED
+// Enable smooth scrolling on the links --- COMPLETED
 // fix the address bar so it doesn't look like trash
 // Also fix the links in the bottom
 // add project placeholders
