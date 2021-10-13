@@ -61,6 +61,23 @@ function modalCloseAnimation() {
 }
 /* ☝🏽☝🏽-----------------☝🏽☝🏽 */
 
+
+// smooth scrolling
+const handleLinkClick = e => {
+  e.preventDefault();
+  const href = e.currentTarget.getAttribute('href');
+  const offsetTop = document.querySelector(href).offsetTop;
+
+  scroll({
+    top: offsetTop,
+    behavior: 'smooth'
+  });
+}
+
+for (const link of links) {
+  link.addEventListener('click', handleLinkClick);
+}
+
 /* title animation */
 async function animateTitle() {
   const titleSpan = app.querySelector('.title');
@@ -142,4 +159,5 @@ const select = (el, all = false) => {
 // fix the address bar so it doesn't look like trash
 // Also fix the links in the bottom
 // add project placeholders
+// learn more can have more about me, my journey as a developer?
 

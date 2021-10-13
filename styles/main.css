@@ -213,6 +213,7 @@ h6 {
 
 .learn-more p {
   margin: 0;
+  display: none;
 }
 
 .hello_world,
@@ -377,7 +378,5 @@ h6 {
 
 @media (max-width:  7800px) {
   .app {
-    /*position: fixed*/
-    /* may need this to prevent scrolling on mobile */
   }
 }
