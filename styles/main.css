@@ -137,6 +137,10 @@ h6 {
 .navbar {
 }
 
+.paper_plane {
+  height: 38px;
+}
+
 .menu__list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -376,7 +380,87 @@ h6 {
   border-radius: 50%;
 }
 
-@media (max-width:  7800px) {
+
+
+
+
+
+/* begin contact form styles */
+.form_container *:focus {
+  outline: 0;
+}
+
+
+.form_container {
+  padding: 12px 24px 24px 24px;
+  margin: 48px 12px;
+  background: #E3F2FD;
+  border-radius: 4px;
+}
+
+.form_container h3 {
+  text-align: center;
+}
+
+/* Add styles to 'label' selector */
+.form_container label {
+  font-size: 0.85em;
+  margin-left: 12px;
+}
+
+/* Add styles to 'input' and 'textarea' selectors */
+.form_container input[type=text],
+.form_container input[type=email],
+.form_container textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+/* styles to show 'focus' of selector */
+.form_container input[type=text]:focus,
+.form_container input[type=email]:focus,
+.form_container textarea:focus {
+  border: 1px solid green;
+}
+
+/* styles for submit button */
+.form_container input[type=submit] {
+  background: #64B5F6;
+  margin: 0 auto;
+  outline: 0;
+  color: white;
+  border: 0;
+  padding: 12px 24px;
+  border-radius: 4px;
+  transition: all ease-in-out 0.1s;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+/* styles for 'focus' */
+.form_container input[type=submit]:focus {
+  background: #A5D6A7;
+  color: whitesmoke;
+}
+
+/* styles for 'hover' */
+.form_container input[type=submit]:hover {
+  background: #2196F3;
+}
+
+.form_container .center {
+  text-align: center;
+}
+/* end contact form styles */
+
+@media (max-width:  780px) {
   .app {
   }
 }

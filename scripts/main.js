@@ -6,9 +6,9 @@ const modalOuter = body.querySelector('.modal__outer');
 const modalInner = modalOuter.querySelector('.modal__inner');
 const close = modalInner.querySelector('.modal__button-close');
 const rippleOrigin = modalOuter.querySelector('.ripple-origin');
-const links = body.querySelectorAll('.navbar .menu__list .menu__link');
 
-// modal f/x
+
+/* to do: clean up "under construction" related items when MVP is ready */
 function handlePageLoad() {
   body.classList.add('hidden-overflow');
   app.classList.add('background-blur');
@@ -17,12 +17,14 @@ function handlePageLoad() {
   modalOuter.addEventListener('click', handleClick);
   close.addEventListener('click', handleClick);
   window.addEventListener('keyup', handleKeyUp);
+
+  document.removeEventListener('DOMContentLoaded', pageLoaded);
 }
 
 async function closeModal() {
   modalCloseAnimation();
 
-  await wait(1500);
+  // await wait(1500);
   body.classList.remove('hidden-overflow');
   rippleOrigin.classList.remove('ripple-origin-show', 'ripple');
   modalOuter.classList.remove('modal__outer-open', 'modal__outer-background');
@@ -36,7 +38,6 @@ async function closeModal() {
   animateTitle();
 }
 
-/* 👇🏽👇🏽 remove this section when page is "complete" 👇🏽👇🏽 */
 function handleClick(e) {
   if ((e.currentTarget === close) ||
     (e.target === e.currentTarget)) {
@@ -57,15 +58,16 @@ async function expireModal() {
 
 function modalCloseAnimation() {
   modalInner.style.cssText = `display: none;`;
-  rippleOrigin.classList.add('ripple-origin-show', 'ripple');
+  // rippleOrigin.classList.add('ripple-origin-show', 'ripple');
 }
-/* ☝🏽☝🏽-----------------☝🏽☝🏽 */
-
 
 // smooth scrolling
-const handleLinkClick = e => {
+const smoothScrolling = e => {
   e.preventDefault();
   const href = e.currentTarget.getAttribute('href');
+
+  if (!href) return;
+
   const offsetTop = document.querySelector(href).offsetTop;
 
   scroll({
@@ -74,9 +76,14 @@ const handleLinkClick = e => {
   });
 }
 
-for (const link of links) {
-  link.addEventListener('click', handleLinkClick);
+function handleLinkClick() {
+  const links = body.querySelectorAll('.navbar .menu__list .menu__link');
+
+  for (const link of links) {
+    link.addEventListener('click', smoothScrolling);
+  }
 }
+
 
 /* title animation */
 async function animateTitle() {
@@ -109,46 +116,63 @@ async function animateTitle() {
 };
 /* ----------------- */
 
+/* animate contact link */
+const startContactAnimation = e => {
+  const contactLink = document.querySelector('.contact_form');
+  const paperPlane = `
+  <img src="images/paper_plane.svg" alt="clickable paper plame image for contact form" class="paper_plane">
+  `;
+
+  contactLink.addEventListener('mouseenter', function() {
+    contactLink.style.cssText = `padding: 1px;`;
+    contactLink.innerHTML = paperPlane;
+  });
+
+  contactLink.addEventListener('mouseleave', function() {
+    contactLink.style.cssText = `padding: 10;`;
+    contactLink.innerHTML = 'contact';
+  });
+}
+
+
+
+// contact me
+const contactForm = `
+  <div class="form_container">
+    <h3>Contact Me!</h3>
+    <form method="post" action="" name="contact_form">
+      <label for="full_name">Thine Name</label>
+      <input name="full_name" type="text" required placeholder="John" />
+      <br>
+      <label for="email">Thine Email</label>
+      <input name="email" type="email" required placeholder="you@domain.com" />
+      <br>
+      <label for="message">Thine Message</label><br>
+      <textarea name="message" cols="30" rows="10" placeholder="Enter your message here ..." required> </textarea>
+      <div class="center">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+`;
+
+// call functions & event listeners
+startContactAnimation();
+handleLinkClick();
 expireModal();
 
 const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad);
 
-document.removeEventListener('DOMContentLoaded', pageLoaded);
 
-const select = (el, all = false) => {
-  el = el.trim()
-  if (all) {
-    return [...document.querySelectorAll(el)]
-  } else {
-    return document.querySelector(el)
-  }
-}
-
-// Not sure if I want to implement this, don't want to have to use an external library
-// class Typed {
-//   constructor(strings, loop, typeSpeed, backSpeed, backDelay) {
-//     this.strings = strings;
-//     this.loop = loop;
-//     this.typeSpeed = typeSpeed;
-//     this.backSpeed = backSpeed;
-//     this.backDelay = backDelay;
-//   }
-//  }
-
-// const typed = select('.title')
-// function animate() {
-//   if (typed) {
-//     let typed_strings = 'Dog Dad, Engineer, Volleyball Player, Human, Web Developer';
-//     typed_strings = typed_strings.split(',')
-//     new Typed('.title', {
-//       strings: typed_strings,
-//       loop: true,
-//       typeSpeed: 100,
-//       backSpeed: 50,
-//       backDelay: 2000
-//     });
+// const select = (el, all = false) => {
+//   el = el.trim()
+//   if (all) {
+//     return [...document.querySelectorAll(el)]
+//   } else {
+//     return document.querySelector(el)
 //   }
 // }
+
 
 // TO DO
 // on load, animate the title --- COMPLETED
@@ -156,6 +180,7 @@ const select = (el, all = false) => {
 // change background image to match the title --- COMPLETED
 // at the end of each animation, title should be the default (web dev) --- COMPLETED
 // Enable smooth scrolling on the links --- COMPLETED
+// back to top with JavaScript, appear 1/2 or 1 second after scrolling?
 // fix the address bar so it doesn't look like trash
 // Also fix the links in the bottom
 // add project placeholders
