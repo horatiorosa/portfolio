@@ -250,8 +250,12 @@ h6 {
 }
 
 /* modal styles */
+.modal__outer,
+.modal__inner {
+  /*display: none;*/
+}
+
 .modal__outer {
-  display: grid;
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -259,7 +263,6 @@ h6 {
   left: 0;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   pointer-events: none;
   transition: opacity 0.1s;
 }
@@ -272,8 +275,9 @@ h6 {
   width: 100%;
 }
 
-.modal__outer-open {
-  opacity: 1;
+.modal__outer-open,
+.modal__inner-open {
+  display: grid;
   overflow-y: hidden;
   pointer-events: all;
 }
@@ -301,16 +305,19 @@ h6 {
 
 /* 👇🏽👇🏽 remove this section when page is "complete" 👇🏽👇🏽 */
 .modal__inner {
+  padding: 2rem;
+  border-radius: 5px;
+  position: relative;
+  transition: transform 2s;
+}
+
+.modal__inner-construction {
   background: url(../images/under-construction.png) center center no-repeat hsla(50, 100%, 50%, 0.8);
   background-size: cover;
   width: 50vw;
   min-width: 400px;
   height: 50vh;
   min-height: 400px;
-  padding: 2rem;
-  border-radius: 5px;
-  position: relative;
-  transition: transform 2s;
 }
 
 .modal__outer-open .modal__inner {
@@ -379,11 +386,6 @@ h6 {
   animation: pageLoadAnimation linear 1.834s;
   border-radius: 50%;
 }
-
-
-
-
-
 
 /* begin contact form styles */
 .form_container *:focus {
@@ -455,7 +457,7 @@ h6 {
   background: #2196F3;
 }
 
-.form_container .center {
+.form_container .form__center {
   text-align: center;
 }
 /* end contact form styles */
