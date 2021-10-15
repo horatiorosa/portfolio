@@ -13,8 +13,6 @@ let pageLoadedCount = 0,
   openModalCounter = 0,
   animationCounter = 0;
 
-
-
 /* to do: clean up "under construction" related items when MVP is ready */
 function handlePageLoad() {
   pageLoadedCount += 1;
@@ -34,7 +32,6 @@ const openModal = () => {
   app.classList.add('background-blur');
   modalOuter.classList.add('modal__outer-open', 'modal__outer-background');
   modalInner.classList.add('modal__inner-open', 'modal__inner-construction');
-
 
   openModalCounter += 1;
   // console.log(`opened modal ${openModalCounter} times`);
@@ -75,8 +72,6 @@ async function expireModal() {
     // closeModal();
   }
 }
-
-
 
 // smooth scrolling
 const smoothScrolling = e => {
@@ -176,8 +171,6 @@ const openContactForm = () => {
   modalInner.innerHTML = contactForm;
 }
 
-
-
 const sendMessage = () => {
   animationCounter += 1;
 
@@ -189,7 +182,6 @@ const sendMessage = () => {
   modalInner.innerHTML = '';
   closeModal();
 }
-
 
 async function animateRipple() {
   rippleOrigin.classList.add('ripple-origin-show', 'ripple');
