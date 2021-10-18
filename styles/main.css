@@ -252,7 +252,7 @@ h6 {
 /* modal styles */
 .modal__outer,
 .modal__inner {
-  /*display: none;*/
+  display: none;
 }
 
 .modal__outer {

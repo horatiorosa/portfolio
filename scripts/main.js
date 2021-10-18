@@ -4,7 +4,7 @@ const body = document.querySelector('body');
 const app = body.querySelector('.app');
 const modalOuter = body.querySelector('.modal__outer');
 const modalInner = modalOuter.querySelector('.modal__inner');
-const close = modalInner.querySelector('.modal__button-close');
+const closeX = modalInner.querySelector('.modal__button-close');
 const rippleOrigin = modalOuter.querySelector('.ripple-origin');
 const contactLink = body.querySelector('.contact_form');
 // const contactForm = modalOuter.querySelector('.form_container');
@@ -21,7 +21,7 @@ function handlePageLoad() {
   openModal();
 
   modalOuter.addEventListener('click', handleModalClick);
-  close.addEventListener('click', handleModalClick);
+  closeX.addEventListener('click', handleModalClick);
   window.addEventListener('keyup', handleKeyUp);
 
   document.removeEventListener('DOMContentLoaded', pageLoaded);
@@ -40,12 +40,12 @@ const openModal = () => {
 const closeModal = () => {
   app.classList.remove('background-blur');
   body.classList.remove('hidden-overflow');
-  rippleOrigin.classList.remove('ripple-origin-show', 'ripple');
+  // rippleOrigin.classList.remove('ripple-origin-show', 'ripple');
   modalOuter.classList.remove('modal__outer-open', 'modal__outer-background');
   modalInner.classList.remove('modal__inner-open', 'modal__inner-construction');
 
   window.scrollTo(0,0);
-  close.removeEventListener('click', handleModalClick);
+  closeX.removeEventListener('click', handleModalClick);
 
   if (openModalCounter <= 1) {
     animateTitle();
@@ -56,7 +56,7 @@ const closeModal = () => {
 }
 
 function handleModalClick(e) {
-  if ((e.currentTarget === close) ||
+  if ((e.currentTarget === closeX) ||
     (e.target === e.currentTarget)) {
     return closeModal();
   }
