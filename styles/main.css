@@ -103,29 +103,20 @@ h6 {
 
 @keyframes fadeIn {
   0% {
-    opacity:0;
+    opacity: 0;
   }
   100% {
-    opacity:1;
+    opacity: 1;
   }
 }
 
 /* fade in f/x for hero title text */
-.fade-in-text {
+.fadeout {
   animation: fadeIn ease 2s;
   -webkit-animation: fadeIn ease 2s;
   -moz-animation: fadeIn ease 2s;
   -o-animation: fadeIn ease 2s;
   -ms-animation: fadeIn ease 2s;
-}
-
-@keyframes fadeInText {
-  0% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
 }
 
 .app {
@@ -337,7 +328,29 @@ h6 {
   }
 }
 
-@keyframes pageLoadAnimation {
+/* ripple f/x */
+.ripple-origin {
+  display: none;
+}
+
+.ripple-origin-show {
+  display: unset;
+}
+
+.ripple {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0.2em;
+  height: 0.2em;
+  background-color: #97f4ff;
+  box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 0 black, 0 0 0 0 #298df4;
+  opacity: 0;
+  animation: rippleAnimation linear 1.834s;
+  border-radius: 50%;
+}
+
+@keyframes rippleAnimation {
   45% {
     opacity: 1;
   }
@@ -364,34 +377,11 @@ h6 {
     box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 549px black, 0 0 0 549px #298df4;
   }
 }
-/* ☝🏽☝🏽-----------------☝🏽☝🏽 */
-
-.ripple-origin {
-  display: none;
-}
-
-.ripple-origin-show {
-  display: unset;
-}
-
-.ripple {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 0.2em;
-  height: 0.2em;
-  background-color: #97f4ff;
-  box-shadow: 0 0 .2em .13em #52a8e8, 0 0 0 0 black, 0 0 0 0 #298df4;
-  opacity: 0;
-  animation: pageLoadAnimation linear 1.834s;
-  border-radius: 50%;
-}
 
 /* begin contact form styles */
 .form_container *:focus {
   outline: 0;
 }
-
 
 .form_container {
   padding: 12px 24px 24px 24px;
@@ -405,15 +395,15 @@ h6 {
 }
 
 /* Add styles to 'label' selector */
-.form_container label {
+.contact_form label {
   font-size: 0.85em;
   margin-left: 12px;
 }
 
 /* Add styles to 'input' and 'textarea' selectors */
-.form_container input[type=text],
-.form_container input[type=email],
-.form_container textarea {
+.contact_form input[type=text],
+.contact_form input[type=email],
+.contact_form textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -425,14 +415,14 @@ h6 {
 }
 
 /* styles to show 'focus' of selector */
-.form_container input[type=text]:focus,
-.form_container input[type=email]:focus,
-.form_container textarea:focus {
+.contact_form input[type=text]:focus,
+.contact_form input[type=email]:focus,
+.contact_form textarea:focus {
   border: 1px solid green;
 }
 
 /* styles for submit button */
-.form_container input[type=submit] {
+.contact_form input[type=submit] {
   background: #64B5F6;
   margin: 0 auto;
   outline: 0;
@@ -447,19 +437,20 @@ h6 {
 }
 
 /* styles for 'focus' */
-.form_container input[type=submit]:focus {
+.contact_form input[type=submit]:focus {
   background: #A5D6A7;
   color: whitesmoke;
 }
 
 /* styles for 'hover' */
-.form_container input[type=submit]:hover {
+.contact_form input[type=submit]:hover {
   background: #2196F3;
 }
 
-.form_container .form__center {
+.contact_form .form__center {
   text-align: center;
 }
+
 /* end contact form styles */
 
 @media (max-width:  780px) {

@@ -6,24 +6,20 @@ const modalOuter = body.querySelector('.modal__outer');
 const modalInner = modalOuter.querySelector('.modal__inner');
 const closeX = modalInner.querySelector('.modal__button-close');
 const rippleOrigin = modalOuter.querySelector('.ripple-origin');
-const contactLink = body.querySelector('.contact_form');
-// const contactForm = modalOuter.querySelector('.form_container');
+const contactFormLink = body.querySelector('.contact_form');
+
 let pageLoadedCount = 0,
-  closeModalCounter = 0,
-  openModalCounter = 0,
-  animationCounter = 0;
+  openModalCounter = 0;
 
 /* to do: clean up "under construction" related items when MVP is ready */
 function handlePageLoad() {
   pageLoadedCount += 1;
-  // console.log(`page loaded ${pageLoadedCount} times`);
 
   openModal();
 
   modalOuter.addEventListener('click', handleModalClick);
   closeX.addEventListener('click', handleModalClick);
   window.addEventListener('keyup', handleKeyUp);
-
   document.removeEventListener('DOMContentLoaded', pageLoaded);
 }
 
@@ -34,7 +30,6 @@ const openModal = () => {
   modalInner.classList.add('modal__inner-open', 'modal__inner-construction');
 
   openModalCounter += 1;
-  // console.log(`opened modal ${openModalCounter} times`);
 }
 
 const closeModal = () => {
@@ -47,12 +42,14 @@ const closeModal = () => {
   window.scrollTo(0,0);
   closeX.removeEventListener('click', handleModalClick);
 
-  if (openModalCounter <= 1) {
-    animateTitle();
+  async function startTitleAnimation() {
+    if (openModalCounter <= 1) {
+      await wait(500);
+      animateTitle();
+    }
   }
 
-  closeModalCounter += 1;
-  // console.log(`closed modal ${closeModalCounter} times`);
+  startTitleAnimation();
 }
 
 function handleModalClick(e) {
@@ -131,22 +128,22 @@ const contactAnimation = () => {
   <img src="images/paper_plane.svg" alt="clickable paper plame image for contact form" class="paper_plane">
   `;
 
-  contactLink.addEventListener('mouseenter', function() {
-    contactLink.style.cssText = `padding: 1px;`;
-    contactLink.innerHTML = paperPlane;
+  contactFormLink.addEventListener('mouseenter', function() {
+    contactFormLink.style.cssText = `padding: 1px;`;
+    contactFormLink.innerHTML = paperPlane;
   });
 
-  contactLink.addEventListener('mouseleave', function() {
-    contactLink.style.cssText = `padding: 10;`;
-    contactLink.innerHTML = 'contact';
+  contactFormLink.addEventListener('mouseleave', function() {
+    contactFormLink.style.cssText = `padding: 10;`;
+    contactFormLink.innerHTML = 'contact';
   });
 }
 
-// contact me
-const contactForm = `
+// contact me form
+const contactFormBody = `
   <div class="form_container">
     <h3>Contact Me!</h3>
-    <form method="post" action="" name="contact_form">
+    <form method="post" action="" name="contact_form" class="contact_form">
       <label for="full_name">Your Name</label>
       <input name="full_name" type="text"  placeholder="John" />
       <br>
@@ -157,7 +154,6 @@ const contactForm = `
       <textarea name="message" cols="30" rows="10" placeholder="Enter your message here ..." > </textarea>
       <div class="center">
         <input type="submit"
-          type="button"
           value="Submit"
           onclick="sendMessage();">
       </div>
@@ -168,26 +164,19 @@ const contactForm = `
 const openContactForm = () => {
   openModal();
   modalInner.classList.remove('modal__inner-construction')
-  modalInner.innerHTML = contactForm;
+  modalInner.innerHTML = contactFormBody;
 }
 
 const sendMessage = () => {
-  animationCounter += 1;
-
-  // console.log('animationCounter', animationCounter);
-  if (animationCounter >= 2) {
-    rippleOrigin.classList.add('ripple-origin-show', 'ripple');
-  }
-
   modalInner.innerHTML = '';
+
   closeModal();
 }
 
-async function animateRipple() {
-  rippleOrigin.classList.add('ripple-origin-show', 'ripple');
-  // console.log('ripple');
-  await wait(1000);
-}
+// async function animateRipple() {
+//   rippleOrigin.classList.add('ripple-origin-show', 'ripple');
+//   await wait(1000);
+// }
 
 // call functions & event listeners
 contactAnimation();
@@ -195,7 +184,7 @@ handleLinkClick();
 expireModal();
 
 const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad);
-contactLink.addEventListener('click', openContactForm);
+contactFormLink.addEventListener('click', openContactForm);
 modalOuter.addEventListener('click', handleModalClick);
 window.addEventListener('keyup', handleKeyUp);
 modalOuter.addEventListener('submit', function(e) {
