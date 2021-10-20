@@ -400,18 +400,45 @@ h6 {
   margin-left: 12px;
 }
 
+.contact_form .center {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: flex-start;
+  justify-content: center;
+  grid-auto-columns: 1fr;
+}
+
+.contact_form .cancel {
+  align-self: center;
+  justify-self: end;
+  padding: 5px;
+  margin: 0;
+  background: none;
+  border: none;
+  color: gray;
+}
+
+.contact_form .cancel:hover {
+  cursor: pointer;
+  background-color: white;
+  color: var(--black);
+  border-radius: 3px;
+}
+
+
 /* Add styles to 'input' and 'textarea' selectors */
 .contact_form input[type=text],
 .contact_form input[type=email],
 .contact_form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-family: inherit;
 }
 
 /* styles to show 'focus' of selector */
@@ -431,9 +458,10 @@ h6 {
   padding: 12px 24px;
   border-radius: 4px;
   transition: all ease-in-out 0.1s;
-  position: relative;
-  display: inline-block;
   text-align: center;
+  justify-self: end;
+  align-self: self-start;
+  grid-column: span 1 / 3;
 }
 
 /* styles for 'focus' */

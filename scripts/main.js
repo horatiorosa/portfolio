@@ -6,7 +6,7 @@ const modalOuter = body.querySelector('.modal__outer');
 const modalInner = modalOuter.querySelector('.modal__inner');
 const closeX = modalInner.querySelector('.modal__button-close');
 const rippleOrigin = modalOuter.querySelector('.ripple-origin');
-const contactFormLink = body.querySelector('.contact_form');
+const contactFormLink = body.querySelector('.contact_form_link');
 
 let pageLoadedCount = 0,
   openModalCounter = 0;
@@ -53,8 +53,9 @@ const closeModal = () => {
 }
 
 function handleModalClick(e) {
-  if ((e.currentTarget === closeX) ||
-    (e.target === e.currentTarget)) {
+  if (
+    ((e.currentTarget === closeX) || (e.target === e.currentTarget)) &&
+    openModalCounter < 2) {
     return closeModal();
   }
 }
@@ -112,11 +113,12 @@ async function animateTitle() {
 
     titleSpan.innerText = titleText;
     backgroundImage.src = imageSource;
-    titleSpan.classList.add('fade-in-text');
+    titleSpan.classList.add('fade-in');
     backgroundImage.classList.add('fade-in');
     backgroundImage.alt = altText;
     await wait(1500);
-    titleSpan.classList.remove('fade-in-text');
+    titleSpan.classList.remove('fade-in');
+    titleSpan.classList.add()
     backgroundImage.classList.remove('fade-in');
   }
 };
@@ -144,18 +146,19 @@ const contactFormBody = `
   <div class="form_container">
     <h3>Contact Me!</h3>
     <form method="post" action="" name="contact_form" class="contact_form">
-      <label for="full_name">Your Name</label>
-      <input name="full_name" type="text"  placeholder="John" />
+      <label for="name">Your Name</label>
+      <input name="name" type="text"  placeholder="nom de plume" />
       <br>
       <label for="email">Your Email</label>
-      <input name="email" type="email"  placeholder="you@domain.com" />
+      <input name="email" type="email"  placeholder="your_email@somedomain.com" />
       <br>
       <label for="message">Your Missive</label><br>
-      <textarea name="message" cols="30" rows="10" placeholder="Enter your message here ..." > </textarea>
+      <textarea name="message" cols="50" rows="10" placeholder="your missive here ..." > </textarea>
       <div class="center">
         <input type="submit"
-          value="Submit"
-          onclick="sendMessage();">
+          value="submit"">
+
+          <button type="button" class="cancel"">cancel</button>
       </div>
     </form>
   </div>
@@ -167,9 +170,14 @@ const openContactForm = () => {
   modalInner.innerHTML = contactFormBody;
 }
 
-const sendMessage = () => {
-  modalInner.innerHTML = '';
+const handleSubmit = (e) => {
+  const { name, email, message } = e.target;
+  console.log('Name: ', name.value)
+  console.log('email: ', email.value)
+  console.log('Message: ', message.value)
 
+
+  modalInner.innerHTML = '';
   closeModal();
 }
 
@@ -189,7 +197,7 @@ modalOuter.addEventListener('click', handleModalClick);
 window.addEventListener('keyup', handleKeyUp);
 modalOuter.addEventListener('submit', function(e) {
   e.preventDefault();
-  sendMessage();
+  handleSubmit(e);
 });
 
 // const select = (el, all = false) => {
