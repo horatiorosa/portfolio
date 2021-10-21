@@ -157,8 +157,7 @@ const contactFormBody = `
       <div class="center">
         <input type="submit"
           value="submit"">
-
-          <button type="button" class="cancel"">cancel</button>
+          <button type="button" class="cancel">cancel</button>
       </div>
     </form>
   </div>
@@ -166,15 +165,20 @@ const contactFormBody = `
 
 const openContactForm = () => {
   openModal();
-  modalInner.classList.remove('modal__inner-construction')
+  modalInner.classList.remove('modal__inner-construction');
   modalInner.innerHTML = contactFormBody;
+
+  const cancelButton = modalOuter.querySelector('.cancel');
+  cancelButton.addEventListener('click', function() {
+    closeModal();
+  })
 }
 
 const handleSubmit = (e) => {
   const { name, email, message } = e.target;
-  console.log('Name: ', name.value)
-  console.log('email: ', email.value)
-  console.log('Message: ', message.value)
+  console.log('Name: ', name.value);
+  console.log('email: ', email.value);
+  console.log('Message: ', message.value);
 
 
   modalInner.innerHTML = '';
