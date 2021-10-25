@@ -1,3 +1,5 @@
+import { main } from './mailer.js';
+
 const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
 
 const body = document.querySelector('body');
@@ -10,7 +12,7 @@ const contactFormLink = body.querySelector('.contact_form_link');
 
 let pageLoadedCount = 0,
   openModalCounter = 0;
-
+n
 /* to do: clean up "under construction" related items when MVP is ready */
 function handlePageLoad() {
   pageLoadedCount += 1;
@@ -147,13 +149,13 @@ const contactFormBody = `
     <h3>Contact Me!</h3>
     <form method="post" action="" name="contact_form" class="contact_form">
       <label for="name">Your Name</label>
-      <input name="name" type="text"  placeholder="nom de plume" />
+      <input name="name" type="text" placeholder="nom de plume" required pattern="[A-Za-z]+ />
       <br>
       <label for="email">Your Email</label>
-      <input name="email" type="email"  placeholder="your_email@somedomain.com" />
+      <input name="email" type="email"  placeholder="your_email@somedomain.com" required />
       <br>
       <label for="message">Your Missive</label><br>
-      <textarea name="message" cols="50" rows="10" placeholder="your missive here ..." > </textarea>
+      <textarea name="message" cols="50" rows="10" placeholder="your missive here ..." required > </textarea>
       <div class="center">
         <input type="submit"
           value="submit"">
@@ -175,7 +177,8 @@ const openContactForm = () => {
 }
 
 const handleSubmit = (e) => {
-  const { name, email, message } = e.target;
+  // const { name, email, message } = e.target;
+  validateMessage(e);
   console.log('Name: ', name.value);
   console.log('email: ', email.value);
   console.log('Message: ', message.value);
@@ -183,6 +186,11 @@ const handleSubmit = (e) => {
 
   modalInner.innerHTML = '';
   closeModal();
+}
+
+function validateMessage(e) {
+  const { name, email, message } = e.target;
+  const pattern = new RegExp('^[A-Za-z]+$');
 }
 
 // async function animateRipple() {

@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My pws",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horatiorosa/portfolio.git"
+  },
+  "author": "hjr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horatiorosa/portfolio/issues"
+  },
+  "homepage": "https://github.com/horatiorosa/portfolio#readme",
+  "dependencies": {
+    "nodemailer": "^6.7.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.9.4"
+  }
+}
