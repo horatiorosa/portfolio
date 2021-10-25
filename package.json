@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "My pws",
   "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "browserslist": [
+    "> 0.5%, last 2 versions, not dead"
+  ],
+   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
