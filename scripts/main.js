@@ -1,4 +1,4 @@
-import { main } from './mailer.js';
+import { sendMail } from './mailer.js';
 
 const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -12,7 +12,7 @@ const contactFormLink = body.querySelector('.contact_form_link');
 
 let pageLoadedCount = 0,
   openModalCounter = 0;
-n
+
 /* to do: clean up "under construction" related items when MVP is ready */
 function handlePageLoad() {
   pageLoadedCount += 1;
@@ -147,18 +147,34 @@ const contactAnimation = () => {
 const contactFormBody = `
   <div class="form_container">
     <h3>Contact Me!</h3>
-    <form method="post" action="" name="contact_form" class="contact_form">
+    <form class="contact_form"
+      name="contact_form"
+      method="post"
+      action="send" 
+      enctype="multipart/form-data">
       <label for="name">Your Name</label>
-      <input name="name" type="text" placeholder="nom de plume" required pattern="[A-Za-z]+ />
+      <input name="name"
+        type="text"
+        placeholder="nom de plume" 
+        pattern="^[a-zA-Z ]*$"
+        required />
       <br>
       <label for="email">Your Email</label>
-      <input name="email" type="email"  placeholder="your_email@somedomain.com" required />
+      <input name="email"
+        type="email"
+        placeholder="youremail@yourdomainsdomain.com"
+        required />
       <br>
       <label for="message">Your Missive</label><br>
-      <textarea name="message" cols="50" rows="10" placeholder="your missive here ..." required > </textarea>
+      <textarea name="message"
+        id="message
+        cols="50"
+        rows="10"
+        placeholder="scribe your missive here ..."
+        required ></textarea>
       <div class="center">
         <input type="submit"
-          value="submit"">
+          value="submit">
           <button type="button" class="cancel">cancel</button>
       </div>
     </form>
@@ -173,24 +189,28 @@ const openContactForm = () => {
   const cancelButton = modalOuter.querySelector('.cancel');
   cancelButton.addEventListener('click', function() {
     closeModal();
-  })
+  });
+
 }
 
 const handleSubmit = (e) => {
-  // const { name, email, message } = e.target;
-  validateMessage(e);
-  console.log('Name: ', name.value);
-  console.log('email: ', email.value);
-  console.log('Message: ', message.value);
+  const { name, email, message } = e.target;
+  
+  console.log('Name: ', name);
+  console.log('email: ', email);
+  console.log('Message: ', message);
 
+  const form = document.querySelector('.contact_form');
+  const formEvent = form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    let mail = new FormData(form);
+
+    sendMail(mail);
+  });
 
   modalInner.innerHTML = '';
   closeModal();
-}
-
-function validateMessage(e) {
-  const { name, email, message } = e.target;
-  const pattern = new RegExp('^[A-Za-z]+$');
 }
 
 // async function animateRipple() {
