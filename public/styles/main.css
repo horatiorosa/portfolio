@@ -1,6 +1,7 @@
 :root {
   --yellow: #ffc600;
   --black: #272727;
+  --white: #FFFFFF;
 }
 
 @font-face {
@@ -51,7 +52,7 @@ html {
   box-sizing: border-box;
   font-family: "Apercu", "Lucida Sans Unicode", "Tahoma", "sans-serif";
   font-weight: normal;
-  color: #272727;
+  color: var(--black);
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
 }
 
@@ -174,7 +175,7 @@ h6 {
 }
 
 .divider {
-  color: white;
+  color: var(--white);
   width: 80%;
   grid-column: 1 / -1;
 }
@@ -420,7 +421,7 @@ h6 {
 
 .contact_form .cancel:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: var(--white);
   color: var(--black);
   border-radius: 3px;
 }
@@ -457,7 +458,7 @@ h6 {
   background: #64B5F6;
   margin: 0 auto;
   outline: 0;
-  color: white;
+  color: var(--white);
   border: 0;
   padding: 12px 24px;
   border-radius: 4px;
