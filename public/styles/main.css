@@ -5,44 +5,44 @@
 
 @font-face {
   font-family: Apercu;
-  src: font-url("fonts/apercu-light.eot");
-  src: font-url("fonts/apercu-light.eot") format("embedded-opentype"),
-    font-url("fonts/apercu-light.woff") format("woff"),
-    font-url("fonts/apercu-light.ttf") format("truetype"),
-    font-url("fonts/apercu-light.svg") format("svg");
+  src: font-url("/public/fonts/apercu-light.eot");
+  src: font-url("/public/fonts/apercu-light.eot") format("embedded-opentype"),
+    font-url("/public/fonts/apercu-light.woff") format("woff"),
+    font-url("/public/fonts/apercu-light.ttf") format("truetype"),
+    font-url("/public/fonts/apercu-light.svg") format("svg");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: Apercu;
-  src: font-url("fonts/apercu-regular.eot");
-  src: font-url("fonts/apercu-regular.eot") format("embedded-opentype"),
-    font-url("fonts/apercu-regular.woff") format("woff"),
-    font-url("fonts/apercu-regular.ttf") format("truetype"),
-    font-url("fonts/apercu-regular.svg") format("svg");
+  src: font-url("/public/fonts/apercu-regular.eot");
+  src: font-url("/public/fonts/apercu-regular.eot") format("embedded-opentype"),
+    font-url("/public/fonts/apercu-regular.woff") format("woff"),
+    font-url("/public/fonts/apercu-regular.ttf") format("truetype"),
+    font-url("/public/fonts/apercu-regular.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: Apercu;
-  src: font-url("fonts/apercu-medium.eot");
-  src: font-url("fonts/apercu-medium.eot") format("embedded-opentype"),
-    font-url("fonts/apercu-medium.woff") format("woff"),
-    font-url("fonts/apercu-medium.ttf") format("truetype"),
-    font-url("fonts/apercu-medium.svg") format("svg");
+  src: font-url("/public/fonts/apercu-medium.eot");
+  src: font-url("/public/fonts/apercu-medium.eot") format("embedded-opentype"),
+    font-url("/public/fonts/apercu-medium.woff") format("woff"),
+    font-url("/public/fonts/apercu-medium.ttf") format("truetype"),
+    font-url("/public/fonts/apercu-medium.svg") format("svg");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: Apercu;
-  src: font-url("fonts/apercu-bold.eot");
-  src: font-url("fonts/apercu-bold.eot") format("embedded-opentype"),
-    font-url("fonts/apercu-bold.woff") format("woff"),
-    font-url("fonts/apercu-bold.ttf") format("truetype"),
-    font-url("fonts/apercu-bold.svg") format("svg");
+  src: font-url("/public/fonts/apercu-bold.eot");
+  src: font-url("/public/fonts/apercu-bold.eot") format("embedded-opentype"),
+    font-url("/public/fonts/apercu-bold.woff") format("woff"),
+    font-url("/public/fonts/apercu-bold.ttf") format("truetype"),
+    font-url("/public/fonts/apercu-bold.svg") format("svg");
   font-weight: 700;
   font-style: normal;
 }

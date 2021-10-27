@@ -1,11 +1,26 @@
 {
+  "name": "my portfolio site",
+  "version": "2.0.0",
+  "description": "full rebuild of my pws",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "hjr",
+  "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "multiparty": "^4.2.2",
     "nodemailer": "^6.7.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.27.5"
+    "browser-sync": "^2.27.5",
+    "nodemon": "^2.0.14"
+  },
+  "engines": {
+    "node": "16.12.0"
   }
 }

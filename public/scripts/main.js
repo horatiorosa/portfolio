@@ -102,9 +102,9 @@ async function animateTitle() {
   const backgroundImage = app.querySelector('.background-image');
 
   const titles = [
-    {'title': 'Dog Dad', 'image': './images/horatio_jiro_family_portrait.jpg', 'alt': 'man and his dog posed in a family style photo'},
-    {'title': 'Volleyball Player', 'image': './images/volleyball_team_lets_go.jpg', 'alt': 'men and women of a volleyball team in a huddle'},
-    {'title': 'Web Developer', 'image': './images/sublime.jpg', 'alt': 'photo of Sublime Text editor with code'}
+    {'title': 'Dog Dad', 'image': './public/images/horatio_jiro_family_portrait.jpg', 'alt': 'man and his dog posed in a family style photo'},
+    {'title': 'Volleyball Player', 'image': './public/images/volleyball_team_lets_go.jpg', 'alt': 'men and women of a volleyball team in a huddle'},
+    {'title': 'Web Developer', 'image': './public/images/sublime.jpg', 'alt': 'photo of Sublime Text editor with code'}
   ];
 
   for (const key of titles) {
@@ -129,7 +129,7 @@ async function animateTitle() {
 /* animate contact link */
 const contactAnimation = () => {
   const paperPlane = `
-  <img src="images/paper_plane.svg" alt="clickable paper plame image for contact form" class="paper_plane">
+  <img src="./public/images/paper_plane.svg" alt="clickable paper plame image for contact form" class="paper_plane">
   `;
 
   contactFormLink.addEventListener('mouseenter', function() {
@@ -167,7 +167,7 @@ const contactFormBody = `
       <br>
       <label for="message">Your Missive</label><br>
       <textarea name="message"
-        id="message
+        id="message"
         cols="50"
         rows="10"
         placeholder="scribe your missive here ..."
