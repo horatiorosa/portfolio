@@ -29,7 +29,23 @@ webapp.post('/send', (req, res) => {
     console.table('fields', fields);
     Object.keys(fields).forEach(function(prop) {
       data[prop] = fields[prop].toString();
-    })
+    });
+
+    const mail = {
+      from: data.name,
+      to: process.env.EMAIL,
+      subject: data.subject ? data.subject : 'hello from your contact me form',
+      text: `${data.name} <${data.email}> \n${data.message}`,
+    };
+
+    transporter.sendMail(mail, (err, data) => {
+      if (err) {
+        console.log('error', err);
+        res.status(500).send(`Something went wrong with the email. The error message is: ${err}`);
+      } else {
+        res.status(200).send(`Email successfully sent to recipient!`);
+      }
+    });
   });
 });
 
