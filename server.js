@@ -50,14 +50,13 @@ webapp.post('/send', (req, res) => {
 });
 
 // vertify connection
-transporter.verify(function (error, sucess) {
+transporter.verify(function (error, success) {
   if (error) {
-    console.table('error', error);
+    console.log('error', error);
   } else {
     console.log('Server is ready to receive messages');
   }
 });
-
 
 
 // set index page

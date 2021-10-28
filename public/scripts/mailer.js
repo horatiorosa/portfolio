@@ -1,5 +1,3 @@
-'use strict';
-
 export const sendMail = mail => {
   fetch('https://horatiorosa.com/send',  {
     method: 'post', 
@@ -8,3 +6,4 @@ export const sendMail = mail => {
     return response.json();
   });
 }
+
