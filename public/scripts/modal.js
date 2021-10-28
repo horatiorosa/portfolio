@@ -6,7 +6,7 @@ import {
   modalInner,
   closeX
 } from '../utils/selectors.js';
-import { animateTitle } from './title.js';
+import { animateTitle } from './animate_title.js';
 
 let openModalCounter = 0;
 

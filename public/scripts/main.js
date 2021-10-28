@@ -8,6 +8,8 @@ import {
   rippleOrigin,
   contactFormLink
 } from '../utils/selectors.js';
+import { smoothScrolling } from '../utils/smooth_scrolling.js';
+import { contactAnimation } from '../utils/contact_animation.js';
 import {
   openModal,
   closeModal,
@@ -16,7 +18,7 @@ import {
   expireModal
 } from './modal.js';
 
-import { sendMail } from './mailer.js';
+import { sendMail } from './send_mail.js';
 
 let pageLoadedCount = 0;
 
@@ -33,50 +35,12 @@ function handlePageLoad() {
   document.removeEventListener('DOMContentLoaded', pageLoaded);
 }
 
-
-
-// smooth scrolling
-const smoothScrolling = e => {
-  e.preventDefault();
-  const href = e.currentTarget.getAttribute('href');
-
-  if (!href) return;
-
-  const offsetTop = document.querySelector(href).offsetTop;
-
-  scroll({
-    top: offsetTop,
-    behavior: 'smooth'
-  });
-}
-
 function handleLinkClick() {
   const links = body.querySelectorAll('.navbar .menu__list .menu__link');
 
   for (const link of links) {
     link.addEventListener('click', smoothScrolling);
   }
-}
-
-/* title animation */
-
-/* ----------------- */
-
-/* animate contact link */
-const contactAnimation = () => {
-  const paperPlane = `
-  <img src="/images/paper_plane.svg" alt="clickable paper plame image for contact form" class="paper_plane">
-  `;
-
-  contactFormLink.addEventListener('mouseenter', function() {
-    contactFormLink.style.cssText = `padding: 1px;`;
-    contactFormLink.innerHTML = paperPlane;
-  });
-
-  contactFormLink.addEventListener('mouseleave', function() {
-    contactFormLink.style.cssText = `padding: 10;`;
-    contactFormLink.innerHTML = 'contact';
-  });
 }
 
 // contact me form
@@ -126,7 +90,6 @@ const openContactForm = () => {
   cancelButton.addEventListener('click', function() {
     closeModal();
   });
-
 }
 
 const handleSubmit = (e) => {
@@ -154,7 +117,7 @@ const handleSubmit = (e) => {
 //   await wait(1000);
 // }
 
-// call functions & event listeners
+// callbacks & event listeners
 contactAnimation();
 handleLinkClick();
 expireModal();
