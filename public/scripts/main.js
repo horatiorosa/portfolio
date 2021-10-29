@@ -17,11 +17,10 @@ import {
   handleKeyUp,
   expireModal
 } from './modal.js';
-
+import { contactFormBody, openContactForm } from './contactform.js';
 import { sendMail } from './send_mail.js';
 
 let pageLoadedCount = 0;
-
 
 /* to do: clean up "under construction" related items when MVP is ready */
 function handlePageLoad() {
@@ -41,55 +40,6 @@ function handleLinkClick() {
   for (const link of links) {
     link.addEventListener('click', smoothScrolling);
   }
-}
-
-// contact me form
-const contactFormBody = `
-  <div class="form_container">
-    <h3>Contact Me!</h3>
-    <hr>
-    <form class="contact_form"
-      name="contact_form"
-      method="post"
-      action="send" 
-      enctype="multipart/form-data">
-      <label for="name">Your Name</label>
-      <input name="name"
-        type="text"
-        placeholder="nom de plume" 
-        pattern="^[a-zA-Z ]*$"
-        required />
-      <br>
-      <label for="email">Your Email</label>
-      <input name="email"
-        type="email"
-        placeholder="youremail@yourdomainsdomain.com"
-        required />
-      <br>
-      <label for="message">Your Missive</label><br>
-      <textarea name="message"
-        id="message"
-        cols="50"
-        rows="10"
-        placeholder="scribe your missive here ..."
-        required ></textarea>
-      <div class="center">
-        <input type="submit" value="submit">
-        <button type="button" tabindex="0" class="cancel">cancel</button>
-      </div>
-    </form>
-  </div>
-`;
-
-const openContactForm = () => {
-  openModal();
-  modalInner.classList.remove('modal__inner-construction');
-  modalInner.innerHTML = contactFormBody;
-
-  const cancelButton = modalOuter.querySelector('.cancel');
-  cancelButton.addEventListener('click', function() {
-    closeModal();
-  });
 }
 
 const handleSubmit = (e) => {
@@ -112,11 +62,6 @@ const handleSubmit = (e) => {
   closeModal();
 }
 
-// async function animateRipple() {
-//   rippleOrigin.classList.add('ripple-origin-show', 'ripple');
-//   await wait(1000);
-// }
-
 // callbacks & event listeners
 contactAnimation();
 handleLinkClick();
@@ -131,16 +76,6 @@ modalOuter.addEventListener('submit', function(e) {
   handleSubmit(e);
 });
 
-// const select = (el, all = false) => {
-//   el = el.trim()
-//   if (all) {
-//     return [...document.querySelectorAll(el)]
-//   } else {
-//     return document.querySelector(el)
-//   }
-// }
-
-
 // TO DO
 // on hover / mouse enter, animate the title
 // back to top with JavaScript, appear 1/2 or 1 second after scrolling?
@@ -151,3 +86,8 @@ modalOuter.addEventListener('submit', function(e) {
 
 // set custom error messages for the contact me form
 
+//  may be utilized
+// async function animateRipple() {
+//   rippleOrigin.classList.add('ripple-origin-show', 'ripple');
+//   await wait(1000);
+// }
