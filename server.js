@@ -38,6 +38,8 @@ webapp.post('/send', (req, res) => {
       text: `${data.name} <${data.email}> \n${data.message}`,
     };
 
+    console.log('mail', mail);
+
     transporter.sendMail(mail, (err, data) => {
       if (err) {
         console.log('error', err);
