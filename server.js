@@ -16,6 +16,7 @@ webapp.use(express.static(path.join(__dirname, 'public')));
 const transporter = nodemailer.createTransport({
   host: 'smtp.dreamhost.com',
   port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASS,
@@ -26,7 +27,6 @@ webapp.post('/send', (req, res) => {
   let form = new multiparty.Form();
   let data = {};
   form.parse(req, function(err, fields) {
-    console.table('fields', fields);
     Object.keys(fields).forEach(function(prop) {
       data[prop] = fields[prop].toString();
     });
@@ -38,12 +38,8 @@ webapp.post('/send', (req, res) => {
       text: `${data.name} <${data.email}> \n${data.message}`,
     };
 
-    console.log('mail', mail);
-
     transporter.sendMail(mail, (err, data) => {
       if (err) {
-        console.log('error', err);
-        res.status(500).send(`Something went wrong with the email. The error message is: ${err}`);
       } else {
         res.status(200).send(`Email successfully sent to recipient!`);
       }

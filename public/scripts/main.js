@@ -42,26 +42,6 @@ function handleLinkClick() {
   }
 }
 
-const handleSubmit = (e) => {
-  const { name, email, message } = e.target;
-  
-  console.log('Name: ', name.value);
-  console.log('email: ', email.value);
-  console.log('Message: ', message.value);
-
-  const form = document.querySelector('.contact_form');
-  const formEvent = form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    let mail = new FormData(form);
-
-    sendMail(mail);
-  });
-
-  modalInner.innerHTML = '';
-  closeModal();
-}
-
 // callbacks & event listeners
 contactAnimation();
 handleLinkClick();
@@ -72,8 +52,14 @@ contactFormLink.addEventListener('click', openContactForm);
 modalOuter.addEventListener('click', handleModalClick);
 window.addEventListener('keyup', handleKeyUp);
 modalOuter.addEventListener('submit', function(e) {
-  // e.preventDefault();
-  handleSubmit(e);
+  e.preventDefault();
+  const form = document.querySelector('.contact_form');
+  let mail = new FormData(form);
+
+  sendMail(mail);
+
+  modalInner.innerHTML = '';
+  closeModal();
 });
 
 // TO DO
