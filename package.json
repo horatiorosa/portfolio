@@ -2,10 +2,10 @@
   "name": "my portfolio site",
   "version": "2.0.0",
   "description": "full rebuild of my pws",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "author": "hjr",
   "license": "ISC",
