@@ -8,9 +8,9 @@ export async function animateTitle() {
   const backgroundImage = app.querySelector('.background-image');
 
   const titles = [
-    {'title': 'Dog Dad', 'image': '/images/horatio_jiro_family_portrait.jpg', 'alt': 'man and his dog posed in a family style photo'},
-    {'title': 'Volleyball Player', 'image': '/images/volleyball_team_lets_go.jpg', 'alt': 'men and women of a volleyball team in a huddle'},
-    {'title': 'Web Developer', 'image': '/images/sublime.jpg', 'alt': 'photo of Sublime Text editor with code'}
+    {'title': 'Dog Dad', 'image': '/public/images/horatio_jiro_family_portrait.jpg', 'alt': 'man and his dog posed in a family style photo'},
+    {'title': 'Volleyball Player', 'image': '/public/images/volleyball_team_lets_go.jpg', 'alt': 'men and women of a volleyball team in a huddle'},
+    {'title': 'Web Developer', 'image': '/public/images/sublime.jpg', 'alt': 'photo of Sublime Text editor with code'}
   ];
 
   for (const key of titles) {

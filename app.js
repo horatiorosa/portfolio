@@ -8,10 +8,39 @@ require('dotenv').config();
 // instantiating express app
 const webapp =  express();
 // cors
-webapp.use(cors({ origin: "*" }));
+// const whitelist = [
+//   'http://localhost:5000/',
+//   'localhost:5000/',
+//   'https://test-and-debug-pws.herokuapp.com/',
+//   'test-and-debug-pws.herokuapp.com/',
+//   'https://horatiorosa.com/',
+//   'http://horatiorosa.com/', 
+//   'horatiorosa.com/'
+//  ];
 
-// webapp.use('./public', express.static(process.cwd() + './public')); //make public static
-webapp.use(express.static(path.join(__dirname, 'public')));
+//  const corsOptionsDelegate = function (req, callback) {
+//   let corsOptions;
+//   if (whitelist.indexOf(req.header('Origin')) !== -1) {
+//     corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+//   } else {
+//     corsOptions = { origin: false } // disable CORS for this request
+//   }
+//   callback(null, corsOptions) // callback expects two parameters: error and options
+// }
+
+webapp.use(cors({ origin: '*', credentials :  true }));
+
+// webapp.use('/public',function(req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   // Request headers you wish to allow
+//   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   // Set to true if you need the website to include cookies in the requests sent
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+//   // Pass to next layer of middleware
+//   next();
+// });
+
+webapp.use('/public', express.static(path.join(__dirname, 'public')));
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.dreamhost.com',
