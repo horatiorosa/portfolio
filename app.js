@@ -41,7 +41,7 @@ webapp.post('/send', (req, res) => {
     transporter.sendMail(mail, (err, data) => {
       if (err) {
       } else {
-        res.status(200).send(`Email successfully sent to recipient!`);
+        res.status(200).send('Email successfully sent to recipient!');
       }
     });
   });

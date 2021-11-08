@@ -1,18 +1,15 @@
+const dreamhostRequest = 'https://horatiorosa.com/send';
+const herokuRequest = 'https://test-and-debug-pws.herokuapp.com/send';
+
 export const sendMail = mail => {
-  fetch('https://horatiorosa.com/send',  {
+  fetch(herokuRequest,  {
     method: 'post',
     body: mail,
+    mode: 'cors',
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   }).then(response => {
     return response.json();
   });
-}
-
-// export const sendMail = mail => {
-//   fetch('https://test-and-debug-pws.herokuapp.com/send',  {
-//     method: 'post',
-//     body: mail,
-//   }).then(response => {
-//     return response.json();
-//   });
-// }
-
+};
