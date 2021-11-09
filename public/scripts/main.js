@@ -55,7 +55,7 @@ modalOuter.addEventListener('submit', function(e) {
   e.preventDefault();
   const form = document.querySelector('.contact_form');
   let mail = new FormData(form);
-
+  
   sendMail(mail);
 
   modalInner.innerHTML = '';

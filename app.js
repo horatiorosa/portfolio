@@ -30,18 +30,19 @@ webapp.post('/send', (req, res) => {
     Object.keys(fields).forEach(function(prop) {
       data[prop] = fields[prop].toString();
     });
-
+    
     const mail = {
-      from: data.name,
+      sender: `${data.name} <${data.email}>`,
       to: process.env.EMAIL,
-      subject: data.subject ? data.subject : 'hello from your contact me form',
-      text: `${data.name} <${data.email}> \n${data.message}`,
+      subject: `${data.subject}` ? `${data.subject}` : `hello from your ${data.name}`,
+      text: `from: ${data.name} \n ${data.name}'s email: <${data.email}> \n message body: ${data.message}`,
     };
 
     transporter.sendMail(mail, (err, data) => {
       if (err) {
+        res.status(500).send(`Something went wrong: ${err}`);
       } else {
-        res.status(200).send('Email successfully sent to recipient!');
+        res.status(200).send(`Email successfully sent to recipient!`);
       }
     });
   });
