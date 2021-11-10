@@ -34,7 +34,7 @@ webapp.post('/send', (req, res) => {
     const mail = {
       sender: `${data.name} <${data.email}>`,
       to: process.env.EMAIL,
-      subject: `${data.subject}` ? `${data.subject}` : `hello from your ${data.name}`,
+      subject: `hello from your ${data.name}`,
       text: `from: ${data.name} \n ${data.name}'s email: <${data.email}> \n message body: ${data.message}`,
     };
 
