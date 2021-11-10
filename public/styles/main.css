@@ -295,8 +295,8 @@ h6 {
 }
 
 .modal__button-close svg {
-  width: 1em;
-  height: 1em;
+  width: 1.5em;
+  height: 1.5em;
   vertical-align: bottom;
 }
 
@@ -313,6 +313,7 @@ h6 {
   background-size: cover;
   width: 50vw;
   min-width: 400px;
+  max-width: 600px;
   height: 50vh;
   min-height: 400px;
 }
