@@ -32,17 +32,24 @@ webapp.post('/send', (req, res) => {
     });
     
     const mail = {
-      sender: `${data.name} <${data.email}>`,
+      from: `${data.name} <${data.email}>`,
       to: process.env.EMAIL,
-      subject: `hello from your ${data.name}`,
+      subject: `A ContactMe Message from ${data.name}`,
       text: `from: ${data.name} \n ${data.name}'s email: <${data.email}> \n message body: ${data.message}`,
+      dsn: {
+        id: `error with message" ${data.messageId}`,
+        return: "headers",
+        notify: ["failure", "delay"],
+        recipient: process.env.EMAIL,
+      },
+      date: new Date().toLocaleString()
     };
 
     transporter.sendMail(mail, (err, data) => {
       if (err) {
         res.status(500).send(`Something went wrong: ${err}`);
       } else {
-        res.status(200).send(`Email successfully sent to recipient!`);
+        res.status(200).send(`email successfully sent to recipient: ${data.messageId}`);
       }
     });
   });
