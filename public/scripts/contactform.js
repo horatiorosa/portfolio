@@ -21,13 +21,15 @@ export const contactFormBody = `
         type="text"
         placeholder="nom de plume"
         pattern="^[a-zA-Z ]*$"
-        required />
+        oninvalid="this.setCustomValidity('Please use only alphabetical characters')"
+        oninput="this.setCustomValidity('')"
+        required/>
       <br>
       <label for="email">Your Email</label>
       <input name="email"
         type="email"
         placeholder="youremail@yourdomainsdomain.com"
-        required />
+        required/>
       <br>
       <label for="message">Your Missive</label><br>
       <textarea name="message"

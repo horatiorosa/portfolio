@@ -63,7 +63,6 @@ modalOuter.addEventListener('submit', function(e) {
 });
 
 // TO DO
-// on hover / mouse enter, animate the title
 // back to top with JavaScript, appear 1/2 or 1 second after scrolling?
 // fix the address bar so it doesn't look like trash
 // Also fix the links in the bottom

@@ -7,10 +7,11 @@ require('dotenv').config();
 
 // instantiating express app
 const webapp =  express();
+
 // cors
 webapp.use(cors({ origin: "*" }));
 
-// webapp.use('./public', express.static(process.cwd() + './public')); //make public static
+//make public static
 webapp.use(express.static(path.join(__dirname, 'public')));
 
 const transporter = nodemailer.createTransport({
