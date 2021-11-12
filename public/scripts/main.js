@@ -42,6 +42,9 @@ function handleLinkClick() {
   }
 }
 
+
+
+
 // callbacks & event listeners
 contactAnimation();
 handleLinkClick();
@@ -51,11 +54,25 @@ const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad)
 contactFormLink.addEventListener('click', openContactForm);
 modalOuter.addEventListener('click', handleModalClick);
 window.addEventListener('keyup', handleKeyUp);
-modalOuter.addEventListener('submit', function(e) {
+
+modalOuter.addEventListener('touchstart', function(e) {
   e.preventDefault();
+
   const form = document.querySelector('.contact_form');
   let mail = new FormData(form);
-  
+
+  sendMail(mail);
+
+  modalInner.innerHTML = '';
+  closeModal();
+});
+
+modalOuter.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const form = document.querySelector('.contact_form');
+  let mail = new FormData(form);
+
   sendMail(mail);
 
   modalInner.innerHTML = '';
