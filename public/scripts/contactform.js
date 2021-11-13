@@ -6,6 +6,7 @@ import {
   openModal,
   closeModal,
 } from './modal.js';
+import { sendMail } from './send_mail.js';
 
 export const contactFormBody = `
   <div class="form_container">
@@ -51,9 +52,21 @@ export const openContactForm = () => {
   modalInner.classList.remove('modal__inner-construction');
   modalInner.innerHTML = contactFormBody;
 
-  const cancelButton = modalOuter.querySelector('.cancel');
+  const contactForm = modalOuter.querySelector('.contact_form');
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let mail = new FormData(contactForm);
+
+    sendMail(mail);
+
+    modalInner.innerHTML = '';
+    closeModal();
+  });
+
+  const cancelButton = contactForm.querySelector('.cancel');
   cancelButton.addEventListener('click', function() {
     closeModal();
   });
 }
-

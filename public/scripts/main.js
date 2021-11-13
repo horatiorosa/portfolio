@@ -17,8 +17,7 @@ import {
   handleKeyUp,
   expireModal
 } from './modal.js';
-import { contactFormBody, openContactForm } from './contactform.js';
-import { sendMail } from './send_mail.js';
+import { openContactForm } from './contactform.js';
 
 let pageLoadedCount = 0;
 
@@ -42,9 +41,6 @@ function handleLinkClick() {
   }
 }
 
-
-
-
 // callbacks & event listeners
 contactAnimation();
 handleLinkClick();
@@ -67,17 +63,6 @@ modalOuter.addEventListener('touchstart', function(e) {
   closeModal();
 });
 
-modalOuter.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const form = document.querySelector('.contact_form');
-  let mail = new FormData(form);
-
-  sendMail(mail);
-
-  modalInner.innerHTML = '';
-  closeModal();
-});
 
 // TO DO
 // back to top with JavaScript, appear 1/2 or 1 second after scrolling?
