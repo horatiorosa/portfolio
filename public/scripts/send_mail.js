@@ -4,15 +4,14 @@ import {
   modalOuter,
   modalInner,
   cancelButton,
-  formContainer
+  formContainer,
+  herokuRequest,
+  dreamhostRequest
 } from '../utils/selectors.js';
 import {
   openModal,
   closeModal,
 } from './modal.js';
-
-const dreamhostRequest = 'https://horatiorosa.com/send';
-const herokuRequest = 'https://test-and-debug-pws.herokuapp.com/send';
 
 export const openContactForm = () => {
   openModal();
@@ -30,6 +29,7 @@ form.addEventListener('submit', e => {
 
   closeModal();
   toggleDisplay(closeX, formContainer);
+  form.reset();
 });
 
 
@@ -45,7 +45,7 @@ const toggleDisplay = (...els) => {
 }
 
 const sendMail = mail => {
-  fetch(herokuRequest, {
+  fetch(dreamhostRequest, {
     method: 'post',
     body: mail
   }).then(response => {
