@@ -6,15 +6,21 @@ const modalOuter = body.querySelector('.modal__outer');
 const modalInner = modalOuter.querySelector('.modal__inner');
 const closeX = modalInner.querySelector('.modal__button-close');
 const rippleOrigin = modalOuter.querySelector('.ripple-origin');
+const form = modalOuter.querySelector('.contact_form');
+const formContainer = modalOuter.querySelector('.form_container');
 const contactFormLink = body.querySelector('.contact_form_link');
+const cancelButton = form.querySelector('.cancel');
 
 export {
+  app,
   wait,
   body,
-  app,
+  form,
+  closeX,
   modalOuter,
   modalInner,
-  closeX,
+  cancelButton,
   rippleOrigin,
+  formContainer,
   contactFormLink
 };

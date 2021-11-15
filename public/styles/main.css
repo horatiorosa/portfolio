@@ -90,6 +90,10 @@ h6 {
   font-size: 1.5em;
 }
 
+.display--none {
+  display: none;
+}
+
 .background-blur {
   filter: blur(4px);
 }
@@ -314,7 +318,7 @@ h6 {
   width: 50vw;
   min-width: 400px;
   max-width: 600px;
-  height: 50vh;
+  /*height: 50vh;*/
   min-height: 400px;
 }
 

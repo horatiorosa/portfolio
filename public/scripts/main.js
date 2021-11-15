@@ -2,9 +2,9 @@ import {
   wait,
   body,
   app,
-  modalOuter,
-  modalInner,
   closeX,
+  modalInner,
+  modalOuter,
   rippleOrigin,
   contactFormLink
 } from '../utils/selectors.js';
@@ -13,11 +13,11 @@ import { contactAnimation } from '../utils/contact_animation.js';
 import {
   openModal,
   closeModal,
-  handleModalClick,
   handleKeyUp,
-  expireModal
+  expireModal,
+  handleModalClick
 } from './modal.js';
-import { openContactForm } from './contactform.js';
+import { openContactForm } from './send_mail.js';
 
 let pageLoadedCount = 0;
 
@@ -50,19 +50,6 @@ const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad)
 contactFormLink.addEventListener('click', openContactForm);
 modalOuter.addEventListener('click', handleModalClick);
 window.addEventListener('keyup', handleKeyUp);
-
-modalOuter.addEventListener('touchstart', function(e) {
-  e.preventDefault();
-
-  const form = document.querySelector('.contact_form');
-  let mail = new FormData(form);
-
-  sendMail(mail);
-
-  modalInner.innerHTML = '';
-  closeModal();
-});
-
 
 // TO DO
 // back to top with JavaScript, appear 1/2 or 1 second after scrolling?
