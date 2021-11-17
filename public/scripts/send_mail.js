@@ -16,7 +16,7 @@ const toggleDisplay = (...els) => {
 };
 
 const sendMail = (mail) => {
-  fetch(dreamhostRequest, {
+  fetch(herokuRequest, {
     method: 'post',
     body: mail,
   }).then((response) => response.json());
