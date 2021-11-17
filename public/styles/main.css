@@ -7,6 +7,9 @@
   --darkblue: #00008B;
   --buttonblue: #33A4FF;
   --hoverblue: #267BBF;
+  --purple: #c43ad6;
+  --turquoise: #30CFD0;
+  --filtercolor: #7970c9;
 }
 
 @font-face {
@@ -100,6 +103,16 @@ h6 {
 
 .hidden-overflow {
   overflow: hidden;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--turquoise), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.filter-plane {
+  filter: drop-shadow(2px 1px 1px var(--filtercolor)) contrast(200%);
 }
 
 /* fade in for hero bg image */
@@ -244,10 +257,23 @@ h6 {
   display: grid;
   justify-items: center;
   margin: 1em 0;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 1fr;
 }
 
 .contact-me .menu__list .menu__link {
   font-size: 15px;
+  text-transform: lowercase;
+}
+
+.contact-me .contact-me__findme {
+  font-size: 1.2em;
+  align-self: end;
+  letter-spacing: .3rem;
+}
+
+.contact-me .menu__list {
+  grid-column: 1 / -1;
 }
 
 /* modal styles */
@@ -318,7 +344,6 @@ h6 {
   width: 50vw;
   min-width: 400px;
   max-width: 600px;
-  /*height: 50vh;*/
   min-height: 400px;
 }
 
@@ -406,23 +431,23 @@ h6 {
 }
 
 .form_container hr {
-    overflow: visible;
-    height: 30px;
-    border-style: solid;
-    border-color: var(--silver);
-    border-width: 1px 0 0 0;
-    border-radius: 20px;
+  overflow: visible;
+  height: 30px;
+  border-style: solid;
+  border-color: var(--silver);
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
 }
 
 .form_container hr:before {
-    display: block;
-    content: "";
-    height: 30px;
-    margin-top: -31px;
-    border-style: solid;
-    border-color: var(--silver);
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: var(--silver);
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
 }
 
 .contact_form label {
@@ -499,6 +524,7 @@ h6 {
   align-self: self-start;
   grid-column: span 1 / 3;
   letter-spacing: .5px;
+  text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
 }
 
 .contact_form input[type=submit]:hover,

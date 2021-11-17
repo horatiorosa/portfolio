@@ -2,11 +2,11 @@ import { contactFormLink } from './selectors.js';
 
 export const contactAnimation = () => {
   const paperPlane = `
-  <img src="/images/paper_plane.svg" alt="clickable paper plame image for contact form" class="paper_plane">
+  <img src="/images/paper_plane.svg" alt="clickable paper plame image for contact form" class="paper_plane filter-plane ">
   `;
 
   contactFormLink.addEventListener('mouseenter', () => {
-    contactFormLink.style.cssText = 'padding: 1px;';
+    contactFormLink.style.cssText = 'padding: .5px;';
     contactFormLink.innerHTML = paperPlane;
   });
 

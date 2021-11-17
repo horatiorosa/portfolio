@@ -22,6 +22,14 @@ function handleLinkClick() {
 
   for (const link of links) {
     link.addEventListener('click', smoothScrolling);
+
+    link.addEventListener('mouseenter', () => {
+      link.classList.add('text-gradient');
+    });
+
+    link.addEventListener('mouseleave', () => {
+      link.classList.remove('text-gradient');
+    });
   }
 }
 
