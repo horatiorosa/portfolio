@@ -1,36 +1,20 @@
-import {
-  wait,
-  body,
-  app,
-  closeX,
-  modalInner,
-  modalOuter,
-  rippleOrigin,
-  contactFormLink
-} from '../utils/selectors.js';
+import { body, closeX, modalOuter, contactFormLink } from '../utils/selectors.js';
 import { smoothScrolling } from '../utils/smooth_scrolling.js';
 import { contactAnimation } from '../utils/contact_animation.js';
-import {
-  openModal,
-  closeModal,
-  handleKeyUp,
-  expireModal,
-  handleModalClick
-} from './modal.js';
+import { openModal, handleKeyUp, expireModal, handleModalClick } from './modal.js';
 import { openContactForm } from './send_mail.js';
 
 let pageLoadedCount = 0;
 
-/* to do: clean up "under construction" related items when MVP is ready */
 function handlePageLoad() {
-  pageLoadedCount += 1;
-
   openModal();
 
   modalOuter.addEventListener('click', handleModalClick);
   closeX.addEventListener('click', handleModalClick);
   window.addEventListener('keyup', handleKeyUp);
   document.removeEventListener('DOMContentLoaded', pageLoaded);
+
+  pageLoadedCount += 1;
 }
 
 function handleLinkClick() {

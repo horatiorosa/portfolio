@@ -1,17 +1,17 @@
 const path = require('path');
 const express = require('express');
-const cors = require("cors");
+const cors = require('cors');
 const nodemailer = require('nodemailer');
 const multiparty = require('multiparty');
 require('dotenv').config();
 
 // instantiating express app
-const webapp =  express();
+const webapp = express();
 
 // cors
-webapp.use(cors({ origin: "*" }));
+webapp.use(cors({ origin: '*' }));
 
-//make public static
+// make public static
 webapp.use(express.static(path.join(__dirname, 'public')));
 
 const transporter = nodemailer.createTransport({
@@ -25,13 +25,13 @@ const transporter = nodemailer.createTransport({
 });
 
 webapp.post('/send', (req, res) => {
-  let form = new multiparty.Form();
-  let data = {};
-  form.parse(req, function(err, fields) {
-    Object.keys(fields).forEach(function(prop) {
+  const form = new multiparty.Form();
+  const data = {};
+  form.parse(req, (err, fields) => {
+    Object.keys(fields).forEach((prop) => {
       data[prop] = fields[prop].toString();
     });
-    
+
     const mail = {
       from: `${data.name} <${data.email}>`,
       to: process.env.EMAIL,
@@ -39,11 +39,11 @@ webapp.post('/send', (req, res) => {
       text: `from: ${data.name} \n ${data.name}'s email: <${data.email}> \n message body: ${data.message}`,
       dsn: {
         id: `error with message" ${data.messageId}`,
-        return: "headers",
-        notify: ["failure", "delay"],
+        return: 'headers',
+        notify: ['failure', 'delay'],
         recipient: process.env.EMAIL,
       },
-      date: new Date().toLocaleString()
+      date: new Date().toLocaleString(),
     };
 
     transporter.sendMail(mail, (err, data) => {
@@ -57,7 +57,7 @@ webapp.post('/send', (req, res) => {
 });
 
 // vertify connection
-transporter.verify(function (error, success) {
+transporter.verify((error, success) => {
   if (error) {
     console.log('error', error);
   } else {
@@ -65,10 +65,9 @@ transporter.verify(function (error, success) {
   }
 });
 
-
 // set index page
-webapp.route('/').get(function (req, res) {
-  res.sendFile(process.cwd() + '/public/index.html');
+webapp.route('/').get((req, res) => {
+  res.sendFile(`${process.cwd()}/public/index.html`);
 });
 
 // testing port
@@ -77,4 +76,3 @@ const PORT = process.env.PORT || 5000;
 webapp.listen(PORT, () => {
   console.log(`listening on port ${PORT} ...`);
 });
-

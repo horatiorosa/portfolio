@@ -15,7 +15,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "hjr",
   "dependencies": {
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.27.5",
+    "eslint-config-wesbos": "^2.1.0",
     "nodemon": "^2.0.14"
   },
   "engines": {

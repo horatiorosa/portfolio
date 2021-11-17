@@ -1,4 +1,4 @@
-const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
+const wait = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const body = document.querySelector('body');
 
@@ -28,5 +28,5 @@ export {
   formContainer,
   herokuRequest,
   contactFormLink,
-  dreamhostRequest
+  dreamhostRequest,
 };
