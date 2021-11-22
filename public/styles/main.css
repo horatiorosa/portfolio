@@ -332,7 +332,7 @@ h6 {
 
 /* 👇🏽👇🏽 remove this section when page is "complete" 👇🏽👇🏽 */
 .modal__inner {
-  padding: 2rem;
+  /*padding: 2rem;*/
   border-radius: 5px;
   position: relative;
   transition: transform 2s;
@@ -421,7 +421,7 @@ h6 {
 
 .form_container {
   padding: 12px 24px 24px 24px;
-  margin: 48px 12px;
+  /*margin: 48px 12px;*/
   background: #E3F2FD;
   border-radius: 4px;
 }
