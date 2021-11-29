@@ -330,12 +330,13 @@ h6 {
   vertical-align: bottom;
 }
 
-/* 👇🏽👇🏽 remove this section when page is "complete" 👇🏽👇🏽 */
+/* 👇🏽👇🏽 clean-up this section when page is "complete" 👇🏽👇🏽 */
 .modal__inner {
   /*padding: 2rem;*/
   border-radius: 5px;
   position: relative;
   transition: transform 2s;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 .modal__inner-construction {
@@ -537,6 +538,29 @@ h6 {
 }
 
 /* end contact form styles */
+
+/* project styles */
+
+.galleries {
+  padding: 0 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-self: normal;
+}
+
+.gallery {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+}
+
+.gallery img {
+  width: 100%;
+  object-fit: cover;
+  border:1px solid black;
+}
 
 @media (max-width:  780px) {
   .app {

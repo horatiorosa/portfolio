@@ -4,7 +4,11 @@ import { animateTitle } from './animate_title.js';
 let openModalCounter = 0;
 
 export function handleModalClick(e) {
-  if ((e.currentTarget === closeX || e.target === e.currentTarget) && openModalCounter < 2) {
+  // if ((e.currentTarget === closeX || e.target === e.currentTarget) && openModalCounter < 2) {
+  //   return closeModal();
+  // }
+
+  if (e.currentTarget === closeX || e.target === e.currentTarget) {
     return closeModal();
   }
 }
@@ -16,7 +20,7 @@ export function handleKeyUp(e) {
 export async function expireModal() {
   await wait(3000);
   if (modalOuter.classList.contains('modal__outer-open')) {
-    closeModal();
+    // closeModal();
   }
 }
 

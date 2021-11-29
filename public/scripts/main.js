@@ -39,7 +39,7 @@ handleLinkClick();
 expireModal();
 
 const pageLoaded = document.addEventListener('DOMContentLoaded', handlePageLoad);
-contactFormLink.addEventListener('click', openContactForm);
+hjcontactFormLink.addEventListener('click', openContactForm);
 modalOuter.addEventListener('click', handleModalClick);
 window.addEventListener('keyup', handleKeyUp);
 
