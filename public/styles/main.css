@@ -564,5 +564,10 @@ h6 {
 
 @media (max-width:  780px) {
   .app {
+    grid-template-rows: auto;
+  }
+
+  .modal__inner-open {
+    margin: 48px 12px;;
   }
 }
